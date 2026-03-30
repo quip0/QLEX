@@ -1,0 +1,27 @@
+[project]
+name = "qlex"
+version = "0.1.0"
+description = "The Quantum Lexicon — QEC code registry by Qorex"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+keywords = ["quantum", "error-correction", "QEC", "quantum-computing", "Qorex"]
+dependencies = [
+    "pydantic>=2.0"
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov"]
+
+[project.scripts]
+qlex = "qlex.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/qorex/qlex"
+Repository = "https://github.com/qorex/qlex"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[tool.setuptools.package-data]
+qlex = ["data/*.json"]
