@@ -22,6 +22,20 @@
 
 QLEX does not simulate or decode quantum circuits. It knows everything *about* QEC codes so that other tools don't have to. It is the language layer — the lexicon — that the entire Qorex ecosystem speaks.
 
+## Why QLEX?
+
+QEC code information is scattered across hundreds of papers, and there's no single place to look it up programmatically. If you're building a quantum computing tool — a simulator, a decoder benchmark, a hardware planner — you need to know things like: what's the threshold of the surface code? What decoders work with color codes? Which codes run on trapped ions? Right now you'd dig through arxiv papers or maintain your own spreadsheet.
+
+QLEX is that spreadsheet, except it's a pip-installable Python library with a real API.
+
+**Who it's for:**
+
+- **Researchers** picking a code for an experiment — browse 45 codes, compare thresholds, check hardware compatibility, follow key papers
+- **Tool builders** in the Qorex ecosystem — `to_export_config()` gives a standardized dict any downstream tool can ingest, so every tool speaks the same language about code properties
+- **Students** learning QEC — the TUI lets you explore codes interactively, and the describe screen (`d`) explains what every field means
+
+**Why not just a wiki or PDF?** Because you can't `import` a wiki. QLEX is designed to be a dependency — the single source of truth that other software reads from at runtime. When a new code gets added to the registry, every tool that imports QLEX gets it automatically.
+
 ## Install
 
 ```bash
@@ -265,7 +279,7 @@ See the full [CLI Reference](docs/cli-reference.md) for all options.
 
 ## Registry
 
-QLEX ships with 9 QEC codes sourced from published literature. Every threshold value has a citation.
+QLEX ships with 45 QEC codes sourced from published literature. Every threshold value has a citation.
 
 | Code | Family | [[n, k, d]] | Circuit Threshold | Depolarizing Threshold |
 |------|--------|-------------|-------------------|----------------------|
@@ -273,13 +287,20 @@ QLEX ships with 9 QEC codes sourced from published literature. Every threshold v
 | Rotated Surface Code | topological | [[d², 1, d]] | 0.0057 | 0.189 |
 | Toric Code | topological | [[2d², 2, d]] | 0.0075 | 0.189 |
 | Color Code | topological | [[18, 1, 5]] | 0.0046 | 0.109 |
+| XZZX Surface Code | topological | [[d², 1, d]] | 0.0057 | 0.189 |
+| Floquet Honeycomb | topological | [[2d², 1, d]] | 0.002 | — |
 | Steane [[7,1,3]] | CSS | [[7, 1, 3]] | 0.00027 | — |
 | Shor [[9,1,3]] | stabilizer | [[9, 1, 3]] | — | — |
+| Knill C4/C6 | stabilizer | [[var, 2, var]] | 0.01 | — |
 | Bacon-Shor | subsystem | [[m×m, 1, d]] | 0.00042 | — |
+| Gauge Color Code | subsystem | [[var, 1, var]] | 0.0031 | — |
 | Repetition Code | stabilizer | [[n, 1, d]] | 0.0029 | — |
 | Gross [[144,12,12]] | qLDPC | [[144, 12, 12]] | — | — |
+| Quantum Tanner | qLDPC | [[var, var, var]] | — | — |
+| GKP Code | bosonic | [[1, 1, var]] | — | — |
+| Cat Code | bosonic | [[1, 1, var]] | — | — |
 
-See the [Registry Guide](docs/registry.md) for detailed information about each code, including hardware compatibility, supported decoders, and key papers.
+*Showing 16 of 45 codes. See the [Registry Guide](docs/registry.md) for the full list, including hardware compatibility, supported decoders, and key papers.*
 
 ## Ecosystem
 

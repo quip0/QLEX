@@ -13,29 +13,64 @@
       "circuit_level": 0.0057,
       "notes": "Depolarizing threshold from Dennis et al. (2002) via stat-mech mapping. Circuit-level threshold from Raussendorf & Harrington (2007) with standard depolarizing noise."
     },
-    "hardware_compatibility": ["superconducting", "trapped_ion", "neutral_atom", "NV_center", "silicon_spin"],
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom",
+      "NV_center",
+      "silicon_spin"
+    ],
     "connectivity": "2D nearest-neighbor grid with periodic or open boundaries",
-    "decoders": ["MWPM", "Union-Find", "Belief Propagation", "Neural Network"],
-    "noise_models": ["depolarizing", "biased", "erasure", "circuit_level", "amplitude_damping"],
+    "decoders": [
+      "MWPM",
+      "Union-Find",
+      "Belief Propagation",
+      "Neural Network"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "biased",
+      "erasure",
+      "circuit_level",
+      "amplitude_damping"
+    ],
     "fault_tolerant": true,
-    "logical_gates": ["CNOT", "H", "S", "T (via magic state distillation)"],
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
     "magic_state_distillation": true,
     "key_papers": [
       {
         "title": "Topological quantum memory",
-        "authors": ["Eric Dennis", "Alexei Kitaev", "Andrew Landahl", "John Preskill"],
+        "authors": [
+          "Eric Dennis",
+          "Alexei Kitaev",
+          "Andrew Landahl",
+          "John Preskill"
+        ],
         "year": 2002,
         "arxiv": "quant-ph/0110143"
       },
       {
         "title": "Fault-tolerant quantum computation by anyons",
-        "authors": ["A. Yu. Kitaev"],
+        "authors": [
+          "A. Yu. Kitaev"
+        ],
         "year": 2003,
         "arxiv": "quant-ph/9707021"
       }
     ],
     "description": "The surface code is a topological stabilizer code defined on a 2D lattice of qubits. It achieves high error thresholds due to local stabilizer checks and is a leading candidate for fault-tolerant quantum computing with superconducting architectures. The code encodes one logical qubit per planar patch and supports transversal CNOT via lattice surgery.",
-    "tags": ["topological", "stabilizer", "CSS", "planar", "lattice-surgery"]
+    "tags": [
+      "topological",
+      "stabilizer",
+      "CSS",
+      "planar",
+      "lattice-surgery"
+    ]
   },
   {
     "id": "rotated-surface",
@@ -51,29 +86,63 @@
       "circuit_level": 0.0057,
       "notes": "Same thresholds as the standard surface code; the rotation reduces qubit count without changing the code's error-correcting properties under standard noise."
     },
-    "hardware_compatibility": ["superconducting", "trapped_ion", "neutral_atom", "silicon_spin"],
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom",
+      "silicon_spin"
+    ],
     "connectivity": "2D nearest-neighbor grid, rotated 45 degrees",
-    "decoders": ["MWPM", "Union-Find", "Belief Propagation"],
-    "noise_models": ["depolarizing", "biased", "erasure", "circuit_level"],
+    "decoders": [
+      "MWPM",
+      "Union-Find",
+      "Belief Propagation"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "biased",
+      "erasure",
+      "circuit_level"
+    ],
     "fault_tolerant": true,
-    "logical_gates": ["CNOT", "H", "S", "T (via magic state distillation)"],
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
     "magic_state_distillation": true,
     "key_papers": [
       {
         "title": "Surface codes: Towards practical large-scale quantum computation",
-        "authors": ["Austin G. Fowler", "Matteo Mariantoni", "John M. Martinis", "Andrew N. Cleland"],
+        "authors": [
+          "Austin G. Fowler",
+          "Matteo Mariantoni",
+          "John M. Martinis",
+          "Andrew N. Cleland"
+        ],
         "year": 2012,
         "arxiv": "1208.0928"
       },
       {
         "title": "Topological and subsystem codes on low-degree graphs with flag qubits",
-        "authors": ["Theerapat Tansuwannont", "Christopher Chamberland", "Michael E. Beverland"],
+        "authors": [
+          "Theerapat Tansuwannont",
+          "Christopher Chamberland",
+          "Michael E. Beverland"
+        ],
         "year": 2023,
         "arxiv": "2201.03568"
       }
     ],
     "description": "The rotated surface code is a more qubit-efficient variant of the standard surface code, requiring only d^2 physical qubits instead of 2d^2 - 1 for distance d. It achieves this by rotating the lattice by 45 degrees, placing data qubits at vertices of a tilted grid. Error-correction properties and thresholds are essentially identical to the standard surface code.",
-    "tags": ["topological", "stabilizer", "CSS", "planar", "qubit-efficient"]
+    "tags": [
+      "topological",
+      "stabilizer",
+      "CSS",
+      "planar",
+      "qubit-efficient"
+    ]
   },
   {
     "id": "color",
@@ -89,29 +158,58 @@
       "circuit_level": 0.0046,
       "notes": "Depolarizing threshold from Bombin & Martin-Delgado (2006). Circuit-level threshold from Landahl et al. (2011) for the 4.8.8 color code."
     },
-    "hardware_compatibility": ["superconducting", "trapped_ion", "neutral_atom"],
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom"
+    ],
     "connectivity": "Trivalent lattice (4.8.8, 6.6.6, or 4.6.12 tilings)",
-    "decoders": ["Restriction Decoder", "Projection Decoder", "MWPM"],
-    "noise_models": ["depolarizing", "circuit_level", "erasure"],
+    "decoders": [
+      "Restriction Decoder",
+      "Projection Decoder",
+      "MWPM"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level",
+      "erasure"
+    ],
     "fault_tolerant": true,
-    "logical_gates": ["CNOT", "H", "S", "T (via magic state distillation)"],
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
     "magic_state_distillation": true,
     "key_papers": [
       {
         "title": "Topological quantum distillation",
-        "authors": ["Hector Bombin", "Miguel Angel Martin-Delgado"],
+        "authors": [
+          "Hector Bombin",
+          "Miguel Angel Martin-Delgado"
+        ],
         "year": 2006,
         "arxiv": "quant-ph/0605138"
       },
       {
         "title": "Fault-tolerant quantum computing with color codes",
-        "authors": ["Andrew J. Landahl", "Jonas T. Anderson", "Patrick R. Rice"],
+        "authors": [
+          "Andrew J. Landahl",
+          "Jonas T. Anderson",
+          "Patrick R. Rice"
+        ],
         "year": 2011,
         "arxiv": "1108.5738"
       }
     ],
     "description": "Color codes are topological stabilizer codes defined on trivalent lattices with 3-colorable faces. They support a transversal implementation of the full Clifford group, which is an advantage over surface codes. The 4.8.8 color code is the most commonly studied variant, offering good thresholds with moderate qubit overhead.",
-    "tags": ["topological", "stabilizer", "CSS", "transversal-Clifford"]
+    "tags": [
+      "topological",
+      "stabilizer",
+      "CSS",
+      "transversal-Clifford"
+    ]
   },
   {
     "id": "steane",
@@ -127,29 +225,57 @@
       "circuit_level": 0.00027,
       "notes": "Circuit-level threshold from Aliferis & Cross (2007) using flag-based fault-tolerant syndrome extraction. No meaningful depolarizing threshold for a single block code."
     },
-    "hardware_compatibility": ["superconducting", "trapped_ion", "neutral_atom", "photonic", "NV_center", "silicon_spin"],
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom",
+      "photonic",
+      "NV_center",
+      "silicon_spin"
+    ],
     "connectivity": "All-to-all (7 qubits, dense stabilizer checks)",
-    "decoders": ["Lookup Table", "Steane Syndrome Decoder"],
-    "noise_models": ["depolarizing", "circuit_level"],
+    "decoders": [
+      "Lookup Table",
+      "Steane Syndrome Decoder"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
     "fault_tolerant": true,
-    "logical_gates": ["CNOT", "H", "S", "T (via magic state distillation)"],
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
     "magic_state_distillation": true,
     "key_papers": [
       {
         "title": "Error correcting codes in quantum theory",
-        "authors": ["Andrew M. Steane"],
+        "authors": [
+          "Andrew M. Steane"
+        ],
         "year": 1996,
         "arxiv": "quant-ph/9601029"
       },
       {
         "title": "Multiple-particle interference and quantum error correction",
-        "authors": ["Andrew M. Steane"],
+        "authors": [
+          "Andrew M. Steane"
+        ],
         "year": 1996,
         "arxiv": "quant-ph/9601029"
       }
     ],
     "description": "The Steane code is the smallest CSS code, encoding one logical qubit into seven physical qubits with distance 3. It is based on the classical [7,4,3] Hamming code and supports the full transversal Clifford group. It is widely used in pedagogical contexts and as a building block for concatenated fault-tolerant schemes.",
-    "tags": ["CSS", "stabilizer", "small-block", "Hamming-based", "transversal-Clifford"]
+    "tags": [
+      "CSS",
+      "stabilizer",
+      "small-block",
+      "Hamming-based",
+      "transversal-Clifford"
+    ]
   },
   {
     "id": "shor",
@@ -165,23 +291,47 @@
       "circuit_level": null,
       "notes": "The Shor code was the first QEC code demonstrated and is primarily of historical significance. Practical threshold values are not typically quoted for it."
     },
-    "hardware_compatibility": ["superconducting", "trapped_ion", "neutral_atom", "photonic", "NV_center", "silicon_spin"],
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom",
+      "photonic",
+      "NV_center",
+      "silicon_spin"
+    ],
     "connectivity": "Groups of 3 qubits in blocks of 3 (concatenated structure)",
-    "decoders": ["Lookup Table", "Majority Vote"],
-    "noise_models": ["depolarizing", "circuit_level"],
+    "decoders": [
+      "Lookup Table",
+      "Majority Vote"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
     "fault_tolerant": true,
-    "logical_gates": ["CNOT", "X", "Z"],
+    "logical_gates": [
+      "CNOT",
+      "X",
+      "Z"
+    ],
     "magic_state_distillation": false,
     "key_papers": [
       {
         "title": "Scheme for reducing decoherence in quantum computer memory",
-        "authors": ["Peter W. Shor"],
+        "authors": [
+          "Peter W. Shor"
+        ],
         "year": 1995,
         "arxiv": "quant-ph/9507018"
       }
     ],
     "description": "The Shor code is the first quantum error-correcting code, encoding one logical qubit into nine physical qubits. It uses a concatenation of a 3-qubit bit-flip code and a 3-qubit phase-flip code. While not efficient by modern standards, it is foundational to the field and is used extensively in introductory quantum error correction.",
-    "tags": ["stabilizer", "concatenated", "historical", "small-block"]
+    "tags": [
+      "stabilizer",
+      "concatenated",
+      "historical",
+      "small-block"
+    ]
   },
   {
     "id": "bacon-shor",
@@ -197,29 +347,54 @@
       "circuit_level": 0.00042,
       "notes": "Circuit-level threshold from Aliferis & Cross (2007). The threshold depends on the specific m x m geometry used."
     },
-    "hardware_compatibility": ["superconducting", "trapped_ion", "neutral_atom"],
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom"
+    ],
     "connectivity": "2D grid with row and column parity checks",
-    "decoders": ["Majority Vote", "Belief Propagation"],
-    "noise_models": ["depolarizing", "biased", "circuit_level"],
+    "decoders": [
+      "Majority Vote",
+      "Belief Propagation"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "biased",
+      "circuit_level"
+    ],
     "fault_tolerant": true,
-    "logical_gates": ["CNOT", "H", "S"],
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S"
+    ],
     "magic_state_distillation": true,
     "key_papers": [
       {
         "title": "Operator quantum error-correcting subsystems for self-correcting quantum memories",
-        "authors": ["Dave Bacon"],
+        "authors": [
+          "Dave Bacon"
+        ],
         "year": 2006,
         "arxiv": "quant-ph/0506023"
       },
       {
         "title": "Fault-tolerant quantum computation against biased noise",
-        "authors": ["Peter Aliferis", "John Preskill"],
+        "authors": [
+          "Peter Aliferis",
+          "John Preskill"
+        ],
         "year": 2008,
         "arxiv": "0710.1301"
       }
     ],
     "description": "The Bacon-Shor code is a subsystem code defined on an m x m grid of qubits. It uses gauge operators to simplify syndrome extraction, requiring only 2-qubit measurements instead of higher-weight stabilizer checks. It is particularly well-suited for biased noise models and offers a simpler path to fault tolerance than full stabilizer codes.",
-    "tags": ["subsystem", "gauge", "biased-noise", "simple-syndromes"]
+    "tags": [
+      "subsystem",
+      "gauge",
+      "biased-noise",
+      "simple-syndromes"
+    ]
   },
   {
     "id": "repetition",
@@ -235,29 +410,57 @@
       "circuit_level": 0.0029,
       "notes": "Circuit-level threshold for the repetition code under circuit-level depolarizing noise. Only corrects one type of error (bit-flip or phase-flip), not both."
     },
-    "hardware_compatibility": ["superconducting", "trapped_ion", "neutral_atom", "NV_center", "silicon_spin"],
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom",
+      "NV_center",
+      "silicon_spin"
+    ],
     "connectivity": "1D nearest-neighbor chain",
-    "decoders": ["MWPM", "Majority Vote"],
-    "noise_models": ["depolarizing", "biased", "circuit_level"],
+    "decoders": [
+      "MWPM",
+      "Majority Vote"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "biased",
+      "circuit_level"
+    ],
     "fault_tolerant": false,
-    "logical_gates": ["X", "Z"],
+    "logical_gates": [
+      "X",
+      "Z"
+    ],
     "magic_state_distillation": false,
     "key_papers": [
       {
         "title": "Suppressing quantum errors by scaling a surface code logical qubit",
-        "authors": ["Google Quantum AI"],
+        "authors": [
+          "Google Quantum AI"
+        ],
         "year": 2023,
         "arxiv": "2207.06431"
       },
       {
         "title": "Realizing repeated quantum error correction in a distance-three surface code",
-        "authors": ["Sebastian Krinner", "Nathan Lacroix", "Ants Remm"],
+        "authors": [
+          "Sebastian Krinner",
+          "Nathan Lacroix",
+          "Ants Remm"
+        ],
         "year": 2022,
         "arxiv": "2112.03708"
       }
     ],
     "description": "The repetition code is the simplest quantum error-correcting code, encoding one logical qubit into n physical qubits arranged in a 1D chain. It can only correct one type of Pauli error (bit-flip or phase-flip), making it a classical code embedded in a quantum setting. It is widely used for benchmarking hardware and decoders due to its simplicity.",
-    "tags": ["stabilizer", "1D", "benchmarking", "classical-analog", "simple"]
+    "tags": [
+      "stabilizer",
+      "1D",
+      "benchmarking",
+      "classical-analog",
+      "simple"
+    ]
   },
   {
     "id": "gross-144-12-12",
@@ -273,29 +476,60 @@
       "circuit_level": null,
       "notes": "Thresholds for qLDPC codes are an active area of research. Bravyi et al. (2024) demonstrated that this code achieves a logical error rate below physical error rate at practical noise levels."
     },
-    "hardware_compatibility": ["superconducting", "neutral_atom"],
+    "hardware_compatibility": [
+      "superconducting",
+      "neutral_atom"
+    ],
     "connectivity": "Non-local connectivity required; bivariate bicycle structure with weight-6 checks",
-    "decoders": ["Belief Propagation + OSD", "Small-Set Flip"],
-    "noise_models": ["depolarizing", "circuit_level"],
+    "decoders": [
+      "Belief Propagation + OSD",
+      "Small-Set Flip"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
     "fault_tolerant": true,
-    "logical_gates": ["CNOT"],
+    "logical_gates": [
+      "CNOT"
+    ],
     "magic_state_distillation": true,
     "key_papers": [
       {
         "title": "Quantum error correction below the surface code threshold",
-        "authors": ["Sergey Bravyi", "Andrew Cross", "Jay Gambetta", "Dmitri Maslov", "Patrick Rall", "Theodore Yoder"],
+        "authors": [
+          "Sergey Bravyi",
+          "Andrew Cross",
+          "Jay Gambetta",
+          "Dmitri Maslov",
+          "Patrick Rall",
+          "Theodore Yoder"
+        ],
         "year": 2024,
         "arxiv": "2408.13687"
       },
       {
         "title": "High-threshold and low-overhead fault-tolerant quantum memory",
-        "authors": ["Sergey Bravyi", "Andrew W. Cross", "Jay M. Gambetta", "Dmitri Maslov", "Patrick Rall", "Theodore J. Yoder"],
+        "authors": [
+          "Sergey Bravyi",
+          "Andrew W. Cross",
+          "Jay M. Gambetta",
+          "Dmitri Maslov",
+          "Patrick Rall",
+          "Theodore J. Yoder"
+        ],
         "year": 2024,
         "arxiv": "2308.07915"
       }
     ],
     "description": "The Gross [[144,12,12]] code is a bivariate bicycle quantum LDPC code that encodes 12 logical qubits into 144 physical qubits with distance 12. It achieves a high encoding rate (k/n = 1/12) compared to surface codes. This code demonstrated that qLDPC codes can outperform surface codes in logical error rate per physical qubit, marking a significant milestone for practical quantum error correction.",
-    "tags": ["qLDPC", "bivariate-bicycle", "high-rate", "CSS", "stabilizer"]
+    "tags": [
+      "qLDPC",
+      "bivariate-bicycle",
+      "high-rate",
+      "CSS",
+      "stabilizer"
+    ]
   },
   {
     "id": "toric",
@@ -311,28 +545,2201 @@
       "circuit_level": 0.0075,
       "notes": "Depolarizing threshold from Dennis et al. (2002). Circuit-level threshold from Wang et al. (2003). The toric code has periodic boundary conditions yielding two logical qubits."
     },
-    "hardware_compatibility": ["superconducting", "neutral_atom"],
+    "hardware_compatibility": [
+      "superconducting",
+      "neutral_atom"
+    ],
     "connectivity": "2D nearest-neighbor grid with periodic boundary conditions (torus)",
-    "decoders": ["MWPM", "Union-Find", "Renormalization Group"],
-    "noise_models": ["depolarizing", "biased", "erasure", "circuit_level"],
+    "decoders": [
+      "MWPM",
+      "Union-Find",
+      "Renormalization Group"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "biased",
+      "erasure",
+      "circuit_level"
+    ],
     "fault_tolerant": true,
-    "logical_gates": ["CNOT", "H", "S", "T (via magic state distillation)"],
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
     "magic_state_distillation": true,
     "key_papers": [
       {
         "title": "Topological quantum memory",
-        "authors": ["Eric Dennis", "Alexei Kitaev", "Andrew Landahl", "John Preskill"],
+        "authors": [
+          "Eric Dennis",
+          "Alexei Kitaev",
+          "Andrew Landahl",
+          "John Preskill"
+        ],
         "year": 2002,
         "arxiv": "quant-ph/0110143"
       },
       {
         "title": "Confinement-Higgs transition in a disordered gauge theory and the accuracy threshold for quantum memory",
-        "authors": ["Chenyang Wang", "Jim Harrington", "John Preskill"],
+        "authors": [
+          "Chenyang Wang",
+          "Jim Harrington",
+          "John Preskill"
+        ],
         "year": 2003,
         "arxiv": "quant-ph/0207088"
       }
     ],
     "description": "The toric code is the original topological quantum error-correcting code, defined on a torus (2D lattice with periodic boundary conditions). It encodes two logical qubits and has been foundational in establishing the connection between quantum error correction and topological order. The surface code is its planar variant with open boundaries.",
-    "tags": ["topological", "stabilizer", "CSS", "periodic-boundary", "foundational"]
+    "tags": [
+      "topological",
+      "stabilizer",
+      "CSS",
+      "periodic-boundary",
+      "foundational"
+    ]
+  },
+  {
+    "id": "five-qubit",
+    "name": "Five-Qubit [[5,1,3]] Code",
+    "family": "stabilizer",
+    "parameters": {
+      "n": 5,
+      "k": 1,
+      "d": 3
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "As the smallest perfect code, it is too small to define a meaningful threshold. Used primarily as a building block in concatenated schemes."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom",
+      "photonic",
+      "NV_center"
+    ],
+    "connectivity": "All-to-all (5 qubits, weight-4 stabilizers)",
+    "decoders": [
+      "Lookup Table",
+      "Maximum Likelihood"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level",
+      "amplitude_damping"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "X",
+      "Z",
+      "CNOT"
+    ],
+    "magic_state_distillation": false,
+    "key_papers": [
+      {
+        "title": "Perfect quantum error correcting code",
+        "authors": [
+          "Raymond Laflamme",
+          "Cesar Miquel",
+          "Juan Pablo Paz",
+          "Wojciech Hubert Zurek"
+        ],
+        "year": 1996,
+        "arxiv": "quant-ph/9602019"
+      },
+      {
+        "title": "Mixed-state entanglement and quantum error correction",
+        "authors": [
+          "Charles H. Bennett",
+          "David P. DiVincenzo",
+          "John A. Smolin",
+          "William K. Wootters"
+        ],
+        "year": 1996,
+        "arxiv": "quant-ph/9604024"
+      }
+    ],
+    "description": "The five-qubit code is the smallest quantum error-correcting code that can correct any single-qubit error. It is a perfect code, meaning it saturates the quantum Hamming bound. All stabilizer generators have weight 4, requiring relatively dense connectivity. It is non-CSS and does not support transversal gates beyond Pauli operations.",
+    "tags": [
+      "stabilizer",
+      "perfect",
+      "small-block",
+      "non-CSS",
+      "foundational"
+    ]
+  },
+  {
+    "id": "four-two-two",
+    "name": "[[4,2,2]] Error-Detecting Code",
+    "family": "stabilizer",
+    "parameters": {
+      "n": 4,
+      "k": 2,
+      "d": 2
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Distance 2 means this code detects but cannot correct single-qubit errors. No correction threshold applies."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom",
+      "photonic"
+    ],
+    "connectivity": "All-to-all (4 qubits)",
+    "decoders": [
+      "Post-selection"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": false,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S"
+    ],
+    "magic_state_distillation": false,
+    "key_papers": [
+      {
+        "title": "Detecting and tracking errors with four qubits",
+        "authors": [
+          "M. Takita",
+          "A. W. Cross",
+          "A. D. Corcoles",
+          "J. M. Chow",
+          "J. M. Gambetta"
+        ],
+        "year": 2017,
+        "arxiv": "1705.09259"
+      }
+    ],
+    "description": "The [[4,2,2]] code is the smallest quantum error-detecting code, encoding two logical qubits into four physical qubits with distance 2. It can detect any single-qubit error but cannot correct it. It is widely used in near-term experiments to benchmark quantum processors and as a subroutine in error-detection-based fault tolerance.",
+    "tags": [
+      "stabilizer",
+      "error-detecting",
+      "small-block",
+      "near-term",
+      "CSS"
+    ]
+  },
+  {
+    "id": "reed-muller-15",
+    "name": "Reed-Muller [[15,1,3]] Code",
+    "family": "CSS",
+    "parameters": {
+      "n": 15,
+      "k": 1,
+      "d": 3
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Small block code; thresholds not typically quoted. Notable for supporting a transversal T gate."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom"
+    ],
+    "connectivity": "All-to-all (15 qubits, weight-8 stabilizers)",
+    "decoders": [
+      "Lookup Table",
+      "Maximum Likelihood"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "T"
+    ],
+    "magic_state_distillation": false,
+    "key_papers": [
+      {
+        "title": "Magic state distillation with low overhead",
+        "authors": [
+          "Sergey Bravyi",
+          "Jeongwan Haah"
+        ],
+        "year": 2012,
+        "arxiv": "1209.2426"
+      },
+      {
+        "title": "Fault-tolerant quantum computation with constant overhead",
+        "authors": [
+          "Daniel Gottesman"
+        ],
+        "year": 2014,
+        "arxiv": "1310.2984"
+      }
+    ],
+    "description": "The quantum Reed-Muller [[15,1,3]] code is a CSS code based on punctured Reed-Muller classical codes. Its key feature is supporting a transversal T gate, making it invaluable for magic state distillation protocols. Combined with codes that have transversal Clifford gates, it enables universal fault-tolerant quantum computation.",
+    "tags": [
+      "CSS",
+      "stabilizer",
+      "transversal-T",
+      "Reed-Muller",
+      "magic-state"
+    ]
+  },
+  {
+    "id": "golay",
+    "name": "Quantum Golay [[23,1,7]] Code",
+    "family": "CSS",
+    "parameters": {
+      "n": 23,
+      "k": 1,
+      "d": 7
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Block code with high distance. No asymptotic threshold; used for its strong error correction at finite size."
+    },
+    "hardware_compatibility": [
+      "trapped_ion",
+      "neutral_atom"
+    ],
+    "connectivity": "All-to-all (23 qubits, dense checks)",
+    "decoders": [
+      "Lookup Table",
+      "Maximum Likelihood"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Quantum error correction via codes over GF(4)",
+        "authors": [
+          "A. R. Calderbank",
+          "Eric M. Rains",
+          "Peter W. Shor",
+          "Neil J. A. Sloane"
+        ],
+        "year": 1998,
+        "arxiv": "quant-ph/9608006"
+      }
+    ],
+    "description": "The quantum Golay code is a CSS code derived from the classical binary Golay code. With distance 7 it can correct up to 3 arbitrary qubit errors. It has a high encoding overhead (23 physical qubits for 1 logical) but provides strong protection, making it useful for applications requiring high reliability on small numbers of logical qubits.",
+    "tags": [
+      "CSS",
+      "stabilizer",
+      "high-distance",
+      "Golay",
+      "classical-derived"
+    ]
+  },
+  {
+    "id": "xzzx-surface",
+    "name": "XZZX Surface Code",
+    "family": "topological",
+    "parameters": {
+      "n": "d^2",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": 0.189,
+      "circuit_level": 0.0057,
+      "notes": "Under standard depolarizing noise, thresholds match the rotated surface code. Under biased noise (eta >> 1), the effective threshold approaches 50% for the dominant error type. Ataides et al. (2021)."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom"
+    ],
+    "connectivity": "2D nearest-neighbor grid",
+    "decoders": [
+      "MWPM",
+      "Union-Find",
+      "Belief Propagation"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "biased",
+      "circuit_level",
+      "erasure"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "The XZZX surface code",
+        "authors": [
+          "J. Pablo Bonilla Ataides",
+          "David K. Tuckett",
+          "Stephen D. Bartlett",
+          "Steven T. Flammia",
+          "Benjamin J. Brown"
+        ],
+        "year": 2021,
+        "arxiv": "2009.07851"
+      }
+    ],
+    "description": "The XZZX surface code is a variant of the surface code where stabilizers alternate between XZZX and ZXXZ patterns instead of uniform X-type and Z-type checks. Under standard depolarizing noise it performs identically to the surface code, but under biased noise it dramatically outperforms it, with the threshold for the dominant error approaching 50%.",
+    "tags": [
+      "topological",
+      "stabilizer",
+      "biased-noise",
+      "surface-variant",
+      "CSS"
+    ]
+  },
+  {
+    "id": "floquet-honeycomb",
+    "name": "Floquet Honeycomb Code",
+    "family": "topological",
+    "parameters": {
+      "n": "2d^2",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": 0.002,
+      "notes": "Circuit-level threshold from Gidney et al. (2022) simulations. The code is dynamically generated and does not have a static depolarizing threshold."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "neutral_atom"
+    ],
+    "connectivity": "Honeycomb lattice with degree-3 vertices",
+    "decoders": [
+      "MWPM",
+      "Union-Find"
+    ],
+    "noise_models": [
+      "circuit_level",
+      "erasure"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Dynamically generated logical qubits",
+        "authors": [
+          "Matthew B. Hastings",
+          "Jeongwan Haah"
+        ],
+        "year": 2021,
+        "arxiv": "2107.02194"
+      },
+      {
+        "title": "A fault-tolerant honeycomb memory",
+        "authors": [
+          "Craig Gidney",
+          "Michael Newman",
+          "Matt McEwen"
+        ],
+        "year": 2022,
+        "arxiv": "2108.10457"
+      }
+    ],
+    "description": "The Floquet honeycomb code is a dynamically generated topological code that uses a periodic sequence of 2-body measurements on a honeycomb lattice rather than static multi-body stabilizers. Each measurement round uses only weight-2 checks, greatly simplifying syndrome extraction. The logical qubit emerges dynamically from the measurement schedule.",
+    "tags": [
+      "topological",
+      "floquet",
+      "dynamic",
+      "honeycomb",
+      "2-body-measurements"
+    ]
+  },
+  {
+    "id": "subsystem-surface",
+    "name": "Subsystem Surface Code",
+    "family": "subsystem",
+    "parameters": {
+      "n": "2d^2 - 1",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": 0.003,
+      "notes": "Circuit-level threshold estimated from Bravyi et al. (2013). Uses gauge operators to reduce syndrome extraction weight."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "neutral_atom"
+    ],
+    "connectivity": "2D nearest-neighbor grid",
+    "decoders": [
+      "MWPM",
+      "Union-Find"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Subsystem surface codes with three-qubit check operators",
+        "authors": [
+          "Sergey Bravyi",
+          "Guillaume Duclos-Cianci",
+          "David Poulin",
+          "Martin Suchara"
+        ],
+        "year": 2013,
+        "arxiv": "1207.1443"
+      }
+    ],
+    "description": "The subsystem surface code introduces gauge qubits into the surface code, reducing stabilizer weight from 4 to 3. This simplifies syndrome extraction circuits and reduces the depth of error correction rounds. The trade-off is a slightly lower threshold compared to the standard surface code, but the simpler circuits may be advantageous on near-term hardware.",
+    "tags": [
+      "subsystem",
+      "surface-variant",
+      "gauge",
+      "low-weight",
+      "topological"
+    ]
+  },
+  {
+    "id": "hypergraph-product",
+    "name": "Hypergraph Product Code",
+    "family": "qLDPC",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Thresholds depend on the classical seed codes used. First construction of qLDPC codes with constant rate and growing distance."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "neutral_atom"
+    ],
+    "connectivity": "Non-local; determined by the product of two classical LDPC codes",
+    "decoders": [
+      "Belief Propagation + OSD",
+      "Small-Set Flip",
+      "Union-Find"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Quantum LDPC codes with positive rate and minimum distance proportional to n^(1/2)",
+        "authors": [
+          "Jean-Pierre Tillich",
+          "Gilles Z\u00e9mor"
+        ],
+        "year": 2014,
+        "arxiv": "0903.0566"
+      }
+    ],
+    "description": "Hypergraph product codes are a general construction for quantum LDPC codes obtained by taking the homological product of two classical LDPC codes. They produce CSS codes with constant encoding rate and distance scaling as the square root of the block length. The toric code is a special case of this construction.",
+    "tags": [
+      "qLDPC",
+      "CSS",
+      "homological-product",
+      "constant-rate",
+      "scalable"
+    ]
+  },
+  {
+    "id": "lifted-product",
+    "name": "Lifted Product Code",
+    "family": "qLDPC",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Asymptotically good: both rate k/n and relative distance d/n are constant. Panteleev & Kalachev (2022)."
+    },
+    "hardware_compatibility": [
+      "neutral_atom"
+    ],
+    "connectivity": "Non-local; quasi-cyclic structure from group algebra lifting",
+    "decoders": [
+      "Belief Propagation + OSD",
+      "Linear Programming"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Asymptotically good quantum and locally testable classical LDPC codes",
+        "authors": [
+          "Pavel Panteleev",
+          "Gleb Kalachev"
+        ],
+        "year": 2022,
+        "arxiv": "2111.03654"
+      },
+      {
+        "title": "Quantum LDPC codes with almost linear minimum distance",
+        "authors": [
+          "Pavel Panteleev",
+          "Gleb Kalachev"
+        ],
+        "year": 2022,
+        "arxiv": "2012.04068"
+      }
+    ],
+    "description": "Lifted product codes generalize hypergraph product codes by lifting the construction over a group algebra. This technique produces asymptotically good qLDPC codes \u2014 codes where both the rate and relative distance remain constant as the block length grows. This resolved a major open problem in quantum coding theory.",
+    "tags": [
+      "qLDPC",
+      "CSS",
+      "asymptotically-good",
+      "lifted-product",
+      "breakthrough"
+    ]
+  },
+  {
+    "id": "fiber-bundle",
+    "name": "Fiber Bundle Code",
+    "family": "qLDPC",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Achieves distance scaling as n^(3/5) polylog(n) with constant rate, a significant improvement over hypergraph product codes."
+    },
+    "hardware_compatibility": [
+      "neutral_atom"
+    ],
+    "connectivity": "Non-local; fiber bundle structure over base and fiber graphs",
+    "decoders": [
+      "Belief Propagation + OSD"
+    ],
+    "noise_models": [
+      "depolarizing"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Fiber bundle codes: Breaking the n^(1/2) polylog(n) barrier for quantum LDPC codes",
+        "authors": [
+          "Matthew B. Hastings",
+          "Jeongwan Haah",
+          "Ryan O'Donnell"
+        ],
+        "year": 2021,
+        "arxiv": "2009.03921"
+      }
+    ],
+    "description": "Fiber bundle codes are qLDPC codes constructed using the algebraic topology of fiber bundles. They achieve distance scaling as n^(3/5) polylog(n) while maintaining constant rate and low-weight stabilizers. This was a key stepping stone toward asymptotically good qLDPC codes, breaking the sqrt(n) distance barrier.",
+    "tags": [
+      "qLDPC",
+      "CSS",
+      "fiber-bundle",
+      "improved-distance",
+      "algebraic-topology"
+    ]
+  },
+  {
+    "id": "bivariate-bicycle-72",
+    "name": "Bivariate Bicycle [[72,12,6]] Code",
+    "family": "qLDPC",
+    "parameters": {
+      "n": 72,
+      "k": 12,
+      "d": 6
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Smaller member of the bivariate bicycle family. High encoding rate (k/n = 1/6) with weight-6 checks."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "neutral_atom"
+    ],
+    "connectivity": "Non-local; bivariate bicycle structure with weight-6 checks",
+    "decoders": [
+      "Belief Propagation + OSD",
+      "Small-Set Flip"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "High-threshold and low-overhead fault-tolerant quantum memory",
+        "authors": [
+          "Sergey Bravyi",
+          "Andrew W. Cross",
+          "Jay M. Gambetta",
+          "Dmitri Maslov",
+          "Patrick Rall",
+          "Theodore J. Yoder"
+        ],
+        "year": 2024,
+        "arxiv": "2308.07915"
+      }
+    ],
+    "description": "The [[72,12,6]] bivariate bicycle code is a compact qLDPC code encoding 12 logical qubits into 72 physical qubits. It is a smaller instance from the same family as the [[144,12,12]] code, offering a higher encoding rate at the cost of lower distance. It demonstrates the practical viability of qLDPC codes at moderate block sizes.",
+    "tags": [
+      "qLDPC",
+      "bivariate-bicycle",
+      "high-rate",
+      "CSS",
+      "compact"
+    ]
+  },
+  {
+    "id": "quantum-tanner",
+    "name": "Quantum Tanner Code",
+    "family": "qLDPC",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "First explicit construction of asymptotically good qLDPC codes. Rate and relative distance are both constant. Leverrier & Z\u00e9mor (2022)."
+    },
+    "hardware_compatibility": [
+      "neutral_atom"
+    ],
+    "connectivity": "Non-local; based on Cayley graphs of groups with left-right structure",
+    "decoders": [
+      "Sequential Peeling",
+      "Belief Propagation + OSD"
+    ],
+    "noise_models": [
+      "depolarizing"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Quantum Tanner codes",
+        "authors": [
+          "Anthony Leverrier",
+          "Gilles Z\u00e9mor"
+        ],
+        "year": 2022,
+        "arxiv": "2202.13641"
+      }
+    ],
+    "description": "Quantum Tanner codes are the first explicit family of asymptotically good quantum LDPC codes, achieving constant rate and linear distance simultaneously. They are constructed from Cayley graphs of groups and local classical Tanner codes. This breakthrough resolved a 20-year open problem in quantum coding theory and opened the path to practical high-rate quantum error correction.",
+    "tags": [
+      "qLDPC",
+      "CSS",
+      "asymptotically-good",
+      "Tanner",
+      "breakthrough",
+      "linear-distance"
+    ]
+  },
+  {
+    "id": "balanced-product",
+    "name": "Balanced Product Code",
+    "family": "qLDPC",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Generalizes hypergraph product codes. Can achieve improved distance-to-rate trade-offs depending on the group action used."
+    },
+    "hardware_compatibility": [
+      "neutral_atom"
+    ],
+    "connectivity": "Non-local; quotient of hypergraph product by group action",
+    "decoders": [
+      "Belief Propagation + OSD",
+      "Union-Find"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Balanced product quantum codes",
+        "authors": [
+          "Nikolas P. Breuckmann",
+          "Jens N. Eberhardt"
+        ],
+        "year": 2021,
+        "arxiv": "2012.09271"
+      }
+    ],
+    "description": "Balanced product codes are a generalization of hypergraph product codes that quotient the product complex by a group action. By carefully choosing the group, one can reduce the number of physical qubits while preserving or improving the code distance. This provides a flexible framework for constructing qLDPC codes with tunable parameters.",
+    "tags": [
+      "qLDPC",
+      "CSS",
+      "balanced-product",
+      "group-action",
+      "scalable"
+    ]
+  },
+  {
+    "id": "concatenated-steane",
+    "name": "Concatenated Steane Code",
+    "family": "CSS",
+    "parameters": {
+      "n": "7^L",
+      "k": 1,
+      "d": "3^L"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": 0.00027,
+      "notes": "Circuit-level threshold from Aliferis, Gottesman, & Preskill (2006). L denotes concatenation level. Threshold is for the base Steane code; effective error rate decreases doubly exponentially with L."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom",
+      "photonic"
+    ],
+    "connectivity": "Hierarchical: all-to-all within each level-1 block",
+    "decoders": [
+      "Recursive Lookup Table",
+      "Concatenated Decoder"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Quantum accuracy threshold for concatenated distance-3 codes",
+        "authors": [
+          "Panos Aliferis",
+          "Daniel Gottesman",
+          "John Preskill"
+        ],
+        "year": 2006,
+        "arxiv": "quant-ph/0504218"
+      },
+      {
+        "title": "Fault-tolerant quantum computation with constant overhead",
+        "authors": [
+          "Daniel Gottesman"
+        ],
+        "year": 2014,
+        "arxiv": "1310.2984"
+      }
+    ],
+    "description": "The concatenated Steane code recursively encodes each physical qubit of a Steane code using another Steane code. At level L, it uses 7^L physical qubits with distance 3^L. It was the first scheme used to rigorously prove the threshold theorem for fault-tolerant quantum computation, establishing that arbitrarily long quantum computation is possible if the physical error rate is below a threshold.",
+    "tags": [
+      "CSS",
+      "stabilizer",
+      "concatenated",
+      "threshold-theorem",
+      "foundational"
+    ]
+  },
+  {
+    "id": "cat-code",
+    "name": "Cat Code",
+    "family": "bosonic",
+    "parameters": {
+      "n": 1,
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Bosonic code; threshold depends on the mean photon number and Kerr nonlinearity. Demonstrated exponential suppression of bit-flip errors by Lescanne et al. (2020)."
+    },
+    "hardware_compatibility": [
+      "superconducting"
+    ],
+    "connectivity": "Single bosonic mode with nonlinear coupling",
+    "decoders": [
+      "Maximum Likelihood",
+      "Bayesian Decoder"
+    ],
+    "noise_models": [
+      "photon_loss",
+      "dephasing"
+    ],
+    "fault_tolerant": false,
+    "logical_gates": [
+      "Z",
+      "ZZ"
+    ],
+    "magic_state_distillation": false,
+    "key_papers": [
+      {
+        "title": "Exponential suppression of bit-flips in a qubit encoded in an oscillator",
+        "authors": [
+          "Rapha\u00ebl Lescanne",
+          "Marius Villiers",
+          "Th\u00e9au Peronnin",
+          "Alain Sarlette",
+          "Matthieu Delbecq",
+          "Benjamin Huard",
+          "Takis Kontos",
+          "Mazyar Mirrahimi",
+          "Zaki Leghtas"
+        ],
+        "year": 2020,
+        "arxiv": "1907.11729"
+      },
+      {
+        "title": "Stabilization and operation of a Kerr-cat qubit",
+        "authors": [
+          "Alexander Grimm",
+          "Nicholas E. Frattini",
+          "Shruti Puri",
+          "Shyam Shankar",
+          "Michel H. Devoret"
+        ],
+        "year": 2020,
+        "arxiv": "1907.12131"
+      }
+    ],
+    "description": "Cat codes encode a logical qubit in superpositions of coherent states (cat states) of a bosonic mode. In the Kerr-cat implementation, a driven nonlinear oscillator stabilizes the cat states, achieving exponential suppression of bit-flip errors with increasing photon number. Phase-flip errors grow only linearly, creating a strongly biased noise channel suited for concatenation with repetition or surface codes.",
+    "tags": [
+      "bosonic",
+      "cat-state",
+      "biased-noise",
+      "Kerr-cat",
+      "hardware-efficient"
+    ]
+  },
+  {
+    "id": "gkp",
+    "name": "GKP (Gottesman-Kitaev-Preskill) Code",
+    "family": "bosonic",
+    "parameters": {
+      "n": 1,
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Corrects small displacement errors in phase space. Threshold depends on squeezing level; ~10 dB of squeezing enables break-even with surface code concatenation."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "photonic"
+    ],
+    "connectivity": "Single bosonic mode",
+    "decoders": [
+      "Maximum Likelihood",
+      "Steepest Descent",
+      "Inner Decoder (for concatenation)"
+    ],
+    "noise_models": [
+      "displacement",
+      "photon_loss",
+      "dephasing",
+      "Gaussian"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T"
+    ],
+    "magic_state_distillation": false,
+    "key_papers": [
+      {
+        "title": "Encoding a qubit in an oscillator",
+        "authors": [
+          "Daniel Gottesman",
+          "Alexei Kitaev",
+          "John Preskill"
+        ],
+        "year": 2001,
+        "arxiv": "quant-ph/0008040"
+      },
+      {
+        "title": "Quantum error correction with the Gottesman-Kitaev-Preskill code",
+        "authors": [
+          "Kyungjoo Noh",
+          "Christopher Chamberland"
+        ],
+        "year": 2022,
+        "arxiv": "1908.03579"
+      }
+    ],
+    "description": "The GKP code encodes a logical qubit into a single bosonic mode using a grid of peaks in phase space. It can correct small displacement errors in both position and momentum quadratures. GKP states enable a natural interface between continuous-variable and discrete-variable quantum information and support the full Clifford group via Gaussian operations.",
+    "tags": [
+      "bosonic",
+      "GKP",
+      "continuous-variable",
+      "displacement-error",
+      "Gaussian-operations"
+    ]
+  },
+  {
+    "id": "binomial",
+    "name": "Binomial Code",
+    "family": "bosonic",
+    "parameters": {
+      "n": 1,
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Bosonic code correcting up to L photon loss and G dephasing events. Performance depends on the photon number distribution spacing."
+    },
+    "hardware_compatibility": [
+      "superconducting"
+    ],
+    "connectivity": "Single bosonic mode (cavity)",
+    "decoders": [
+      "Quantum Error Correction Circuits",
+      "Bayesian Decoder"
+    ],
+    "noise_models": [
+      "photon_loss",
+      "dephasing",
+      "photon_gain"
+    ],
+    "fault_tolerant": false,
+    "logical_gates": [
+      "X",
+      "Z"
+    ],
+    "magic_state_distillation": false,
+    "key_papers": [
+      {
+        "title": "New class of quantum error-correcting codes for a bosonic mode",
+        "authors": [
+          "Marios H. Michael",
+          "Matti Silveri",
+          "R. T. Brierley",
+          "Victor V. Albert",
+          "Juha Salmilehto",
+          "Liang Jiang",
+          "S. M. Girvin"
+        ],
+        "year": 2016,
+        "arxiv": "1602.00008"
+      }
+    ],
+    "description": "Binomial codes encode a logical qubit in a superposition of Fock states of a bosonic mode, with photon number populations following binomial coefficients. They exactly correct a finite number of photon loss, gain, and dephasing errors. The code words are constructed analytically, enabling precise tailoring to the dominant error channel of a given bosonic system.",
+    "tags": [
+      "bosonic",
+      "binomial",
+      "photon-loss",
+      "Fock-state",
+      "analytically-constructed"
+    ]
+  },
+  {
+    "id": "gauge-color",
+    "name": "Gauge Color Code",
+    "family": "subsystem",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": 0.0031,
+      "notes": "Circuit-level threshold from Brown et al. (2016). Supports single-shot error correction in 3D."
+    },
+    "hardware_compatibility": [
+      "neutral_atom"
+    ],
+    "connectivity": "3D lattice with 4-colorable cells",
+    "decoders": [
+      "Restriction Decoder",
+      "Projection Decoder"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T"
+    ],
+    "magic_state_distillation": false,
+    "key_papers": [
+      {
+        "title": "Gauge color codes: Optimal transversal gates and gauge fixing in topological stabilizer codes",
+        "authors": [
+          "Hector Bombin"
+        ],
+        "year": 2015,
+        "arxiv": "1311.0879"
+      },
+      {
+        "title": "Fault-tolerant error correction with the gauge color code",
+        "authors": [
+          "Benjamin J. Brown",
+          "Naomi H. Nickerson",
+          "Dan E. Browne"
+        ],
+        "year": 2016,
+        "arxiv": "1503.08217"
+      }
+    ],
+    "description": "The gauge color code is a 3D subsystem code that combines the transversal gate advantages of color codes with the gauge structure of subsystem codes. Its most remarkable feature is supporting a transversal non-Clifford (T) gate without magic state distillation, alongside single-shot error correction where a single round of syndrome measurement suffices.",
+    "tags": [
+      "subsystem",
+      "color-code",
+      "3D",
+      "transversal-T",
+      "single-shot"
+    ]
+  },
+  {
+    "id": "compass",
+    "name": "Compass Code",
+    "family": "subsystem",
+    "parameters": {
+      "n": "L x L",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Interpolates between the surface code and Bacon-Shor code. Threshold depends on the specific compass direction chosen."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "neutral_atom"
+    ],
+    "connectivity": "2D grid with directional gauge operators",
+    "decoders": [
+      "MWPM",
+      "Belief Propagation"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "biased",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Compass codes: Optimal transversal gates and gauge fixing in topological stabilizer codes",
+        "authors": [
+          "Weilei Zeng",
+          "Leonid P. Pryadko"
+        ],
+        "year": 2019,
+        "arxiv": "1812.01738"
+      },
+      {
+        "title": "A fault-tolerant non-Clifford gate for the surface code in two dimensions",
+        "authors": [
+          "Benjamin J. Brown"
+        ],
+        "year": 2020,
+        "arxiv": "2008.11996"
+      }
+    ],
+    "description": "Compass codes are a family of subsystem codes on a 2D lattice that continuously interpolate between the surface code and the Bacon-Shor code by tuning the direction of gauge operators. Different compass orientations trade off between threshold and the types of transversal gates available, providing a flexible framework for hardware-adapted error correction.",
+    "tags": [
+      "subsystem",
+      "gauge",
+      "interpolating",
+      "surface-variant",
+      "Bacon-Shor-variant"
+    ]
+  },
+  {
+    "id": "floquet-color",
+    "name": "Floquet Color Code",
+    "family": "topological",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": 0.0037,
+      "notes": "Circuit-level threshold from Davydova et al. (2024). Uses only 2-body measurements like the honeycomb code but on a color-code lattice."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "neutral_atom"
+    ],
+    "connectivity": "Trivalent lattice (e.g. 6.6.6 tiling)",
+    "decoders": [
+      "MWPM",
+      "Restriction Decoder"
+    ],
+    "noise_models": [
+      "circuit_level",
+      "erasure"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Floquet codes without parent subsystem codes",
+        "authors": [
+          "Margarita Davydova",
+          "Nathanan Tantivasadakarn",
+          "Shankar Balasubramanian"
+        ],
+        "year": 2023,
+        "arxiv": "2210.02468"
+      }
+    ],
+    "description": "The Floquet color code is a dynamically generated topological code that combines the 2-body measurement advantage of Floquet codes with the transversal Clifford gates of color codes. Like the honeycomb code, it uses only weight-2 measurements in a periodic schedule, but its color code structure provides access to a richer set of transversal logical operations.",
+    "tags": [
+      "topological",
+      "floquet",
+      "color-code",
+      "dynamic",
+      "2-body-measurements"
+    ]
+  },
+  {
+    "id": "triangular-color-17",
+    "name": "Triangular Color Code [[17,1,5]]",
+    "family": "topological",
+    "parameters": {
+      "n": 17,
+      "k": 1,
+      "d": 5
+    },
+    "threshold": {
+      "depolarizing": 0.109,
+      "circuit_level": 0.0046,
+      "notes": "Same family thresholds as the general 4.8.8 color code. This is the distance-5 instance on the 4.8.8 tiling."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom"
+    ],
+    "connectivity": "Trivalent lattice (4.8.8 tiling, 17 qubits)",
+    "decoders": [
+      "Restriction Decoder",
+      "Projection Decoder",
+      "Lookup Table"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level",
+      "erasure"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Topological quantum distillation",
+        "authors": [
+          "Hector Bombin",
+          "Miguel Angel Martin-Delgado"
+        ],
+        "year": 2006,
+        "arxiv": "quant-ph/0605138"
+      },
+      {
+        "title": "Fault-tolerant quantum computing with color codes",
+        "authors": [
+          "Andrew J. Landahl",
+          "Jonas T. Anderson",
+          "Patrick R. Rice"
+        ],
+        "year": 2011,
+        "arxiv": "1108.5738"
+      }
+    ],
+    "description": "The triangular color code [[17,1,5]] is a specific small instance of the 4.8.8 color code family with 17 physical qubits and distance 5. It can correct up to 2 arbitrary qubit errors and supports transversal Clifford operations. Its moderate size makes it a practical near-term target for experimental demonstrations of topological quantum error correction.",
+    "tags": [
+      "topological",
+      "stabilizer",
+      "CSS",
+      "color-code",
+      "4.8.8",
+      "near-term"
+    ]
+  },
+  {
+    "id": "heavy-hex",
+    "name": "Heavy-Hex Code",
+    "family": "topological",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": 0.004,
+      "notes": "Circuit-level threshold adapted for IBM's heavy-hex lattice connectivity. Chamberland et al. (2020)."
+    },
+    "hardware_compatibility": [
+      "superconducting"
+    ],
+    "connectivity": "Heavy-hexagonal lattice (degree-3 data qubits, flag qubits on edges)",
+    "decoders": [
+      "MWPM",
+      "Union-Find"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Topological and subsystem codes on low-degree graphs with flag qubits",
+        "authors": [
+          "Christopher Chamberland",
+          "Guanyu Zhu",
+          "Theodore J. Yoder",
+          "Jared B. Hertzberg",
+          "Andrew W. Cross"
+        ],
+        "year": 2020,
+        "arxiv": "1907.09528"
+      }
+    ],
+    "description": "The heavy-hex code is an adaptation of surface and subsystem codes to IBM's heavy-hexagonal qubit connectivity. Flag qubits are placed on edges to enable fault-tolerant syndrome extraction with only degree-3 qubit coupling. This design is specifically optimized for superconducting processors where qubit connectivity is physically constrained.",
+    "tags": [
+      "topological",
+      "heavy-hex",
+      "IBM",
+      "flag-qubits",
+      "hardware-adapted"
+    ]
+  },
+  {
+    "id": "quantum-reed-solomon",
+    "name": "Quantum Reed-Solomon Code",
+    "family": "CSS",
+    "parameters": {
+      "n": 7,
+      "k": 3,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Block code with high distance and high rate for qudit systems (q-dimensional). No standard qubit threshold."
+    },
+    "hardware_compatibility": [
+      "trapped_ion",
+      "photonic"
+    ],
+    "connectivity": "All-to-all (dense stabilizer checks)",
+    "decoders": [
+      "Berlekamp-Massey (adapted)",
+      "Maximum Likelihood"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "erasure"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "Fourier Transform"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Nonbinary quantum codes",
+        "authors": [
+          "Eric M. Rains"
+        ],
+        "year": 1999,
+        "arxiv": "quant-ph/9703048"
+      },
+      {
+        "title": "Quantum error correction via codes over GF(4)",
+        "authors": [
+          "A. R. Calderbank",
+          "Eric M. Rains",
+          "Peter W. Shor",
+          "Neil J. A. Sloane"
+        ],
+        "year": 1998,
+        "arxiv": "quant-ph/9608006"
+      }
+    ],
+    "description": "Quantum Reed-Solomon codes are CSS codes constructed from classical Reed-Solomon codes over finite fields. They achieve the quantum Singleton bound, making them maximum distance separable (MDS) codes. They naturally operate on qudit systems and are particularly effective for erasure correction, where their performance is optimal.",
+    "tags": [
+      "CSS",
+      "qudit",
+      "MDS",
+      "Reed-Solomon",
+      "erasure-optimal"
+    ]
+  },
+  {
+    "id": "quantum-polar",
+    "name": "Quantum Polar Code",
+    "family": "CSS",
+    "parameters": {
+      "n": 16,
+      "k": 4,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Achieves capacity of the quantum erasure channel. Renes et al. (2012). Practical decoding performance under development."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion"
+    ],
+    "connectivity": "Butterfly network (log-depth circuit structure)",
+    "decoders": [
+      "Successive Cancellation",
+      "Belief Propagation"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "erasure"
+    ],
+    "fault_tolerant": false,
+    "logical_gates": [
+      "CNOT"
+    ],
+    "magic_state_distillation": false,
+    "key_papers": [
+      {
+        "title": "Efficient quantum polar codes requiring no preshared entanglement",
+        "authors": [
+          "Joseph M. Renes",
+          "Frederic Dupuis",
+          "Renato Renner"
+        ],
+        "year": 2012,
+        "arxiv": "1307.1136"
+      },
+      {
+        "title": "Quantum polar codes for arbitrary channels",
+        "authors": [
+          "Mark M. Wilde",
+          "Saikat Guha"
+        ],
+        "year": 2013,
+        "arxiv": "1109.5346"
+      }
+    ],
+    "description": "Quantum polar codes are the quantum analog of Arikan's polar codes, exploiting channel polarization to achieve the capacity of quantum channels. They have efficient encoding and decoding circuits with complexity O(n log n). While their finite-length performance is still being optimized, they are theoretically significant as capacity-achieving codes with efficient decoding.",
+    "tags": [
+      "CSS",
+      "polar",
+      "capacity-achieving",
+      "efficient-decoding",
+      "channel-polarization"
+    ]
+  },
+  {
+    "id": "3d-toric",
+    "name": "3D Toric Code",
+    "family": "topological",
+    "parameters": {
+      "n": "3L^3",
+      "k": 3,
+      "d": "L"
+    },
+    "threshold": {
+      "depolarizing": 0.033,
+      "circuit_level": null,
+      "notes": "Depolarizing threshold from Kubica & Preskill (2019). Supports single-shot error correction for X errors."
+    },
+    "hardware_compatibility": [
+      "neutral_atom"
+    ],
+    "connectivity": "3D nearest-neighbor cubic lattice with periodic boundaries",
+    "decoders": [
+      "MWPM",
+      "Renormalization Group",
+      "Sweep Decoder"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level",
+      "erasure"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "CCZ (transversal)"
+    ],
+    "magic_state_distillation": false,
+    "key_papers": [
+      {
+        "title": "Single-shot quantum error correction",
+        "authors": [
+          "Hector Bombin"
+        ],
+        "year": 2015,
+        "arxiv": "1404.5504"
+      },
+      {
+        "title": "Cellular-automaton decoders for topological quantum codes with noisy measurements",
+        "authors": [
+          "Michael Vasmer",
+          "Dan E. Browne",
+          "Aleksander Kubica"
+        ],
+        "year": 2021,
+        "arxiv": "2004.07247"
+      }
+    ],
+    "description": "The 3D toric code is a topological stabilizer code defined on a three-dimensional cubic lattice with periodic boundary conditions. It supports single-shot error correction: a single round of noisy syndrome measurements suffices to reliably correct errors, without the need for repeated measurements. It also supports a transversal CCZ gate, a non-Clifford operation.",
+    "tags": [
+      "topological",
+      "stabilizer",
+      "CSS",
+      "3D",
+      "single-shot",
+      "transversal-CCZ"
+    ]
+  },
+  {
+    "id": "haah-cubic",
+    "name": "Haah Cubic Code",
+    "family": "topological",
+    "parameters": {
+      "n": "2L^3",
+      "k": 4,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Fracton topological code with logarithmic energy barrier. No clean threshold; the number of logical qubits depends on system size in a nontrivial way."
+    },
+    "hardware_compatibility": [
+      "neutral_atom"
+    ],
+    "connectivity": "3D cubic lattice",
+    "decoders": [
+      "Renormalization Group",
+      "Cellular Automaton"
+    ],
+    "noise_models": [
+      "depolarizing"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "X",
+      "Z"
+    ],
+    "magic_state_distillation": false,
+    "key_papers": [
+      {
+        "title": "Local stabilizer codes in three dimensions without string logical operators",
+        "authors": [
+          "Jeongwan Haah"
+        ],
+        "year": 2011,
+        "arxiv": "1101.1962"
+      }
+    ],
+    "description": "Haah's cubic code is a 3D stabilizer code with the remarkable property that it has no string-like logical operators \u2014 all logical operators are fractal. This makes it a fracton topological code with a logarithmic energy barrier to errors, providing enhanced passive protection compared to conventional topological codes. The number of encoded qubits depends on the system size in an intricate number-theoretic way.",
+    "tags": [
+      "topological",
+      "fracton",
+      "3D",
+      "no-string-operators",
+      "self-correcting"
+    ]
+  },
+  {
+    "id": "xy-surface",
+    "name": "XY Surface Code",
+    "family": "topological",
+    "parameters": {
+      "n": "d^2",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": 0.189,
+      "circuit_level": 0.0057,
+      "notes": "Under standard noise, thresholds match the rotated surface code. Specifically designed for XY-biased noise where X and Y errors dominate over Z errors."
+    },
+    "hardware_compatibility": [
+      "superconducting"
+    ],
+    "connectivity": "2D nearest-neighbor grid",
+    "decoders": [
+      "MWPM",
+      "Union-Find"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "biased",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Tailoring surface codes for highly biased noise",
+        "authors": [
+          "David K. Tuckett",
+          "Stephen D. Bartlett",
+          "Steven T. Flammia"
+        ],
+        "year": 2018,
+        "arxiv": "1812.08186"
+      }
+    ],
+    "description": "The XY surface code is a variant of the surface code specifically designed for noise channels where X and Y errors are much more likely than Z errors (XY-biased noise). By tailoring the stabilizer structure to this bias, the code achieves significantly higher effective thresholds under XY-biased noise compared to the standard surface code.",
+    "tags": [
+      "topological",
+      "stabilizer",
+      "biased-noise",
+      "surface-variant",
+      "XY-bias"
+    ]
+  },
+  {
+    "id": "quantum-expander",
+    "name": "Quantum Expander Code",
+    "family": "qLDPC",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "First constant-rate qLDPC codes with square-root distance. Leverrier, Tillich, & Z\u00e9mor (2015)."
+    },
+    "hardware_compatibility": [
+      "neutral_atom"
+    ],
+    "connectivity": "Non-local; based on expander graphs",
+    "decoders": [
+      "Small-Set Flip",
+      "Belief Propagation + OSD"
+    ],
+    "noise_models": [
+      "depolarizing"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Quantum expander codes",
+        "authors": [
+          "Anthony Leverrier",
+          "Jean-Pierre Tillich",
+          "Gilles Z\u00e9mor"
+        ],
+        "year": 2015,
+        "arxiv": "1504.00822"
+      }
+    ],
+    "description": "Quantum expander codes are qLDPC codes constructed from expander graphs, achieving constant encoding rate with distance proportional to the square root of the block length. They were the first qLDPC codes with an efficient linear-time decoding algorithm (small-set flip decoder). They served as a foundation for the later breakthroughs in asymptotically good qLDPC codes.",
+    "tags": [
+      "qLDPC",
+      "CSS",
+      "expander",
+      "linear-time-decoding",
+      "constant-rate"
+    ]
+  },
+  {
+    "id": "surface-17",
+    "name": "Surface-17 Code",
+    "family": "topological",
+    "parameters": {
+      "n": 17,
+      "k": 1,
+      "d": 3
+    },
+    "threshold": {
+      "depolarizing": 0.189,
+      "circuit_level": 0.0057,
+      "notes": "Same threshold as the general surface code family. Uses 9 data qubits and 8 ancilla qubits for a distance-3 instance."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom"
+    ],
+    "connectivity": "2D nearest-neighbor grid (rotated surface code, d=3)",
+    "decoders": [
+      "MWPM",
+      "Union-Find",
+      "Lookup Table"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "biased",
+      "erasure",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Suppressing quantum errors by scaling a surface code logical qubit",
+        "authors": [
+          "Google Quantum AI"
+        ],
+        "year": 2023,
+        "arxiv": "2207.06431"
+      },
+      {
+        "title": "Realizing repeated quantum error correction in a distance-three surface code",
+        "authors": [
+          "Sebastian Krinner",
+          "Nathan Lacroix",
+          "Ants Remm"
+        ],
+        "year": 2022,
+        "arxiv": "2112.03708"
+      }
+    ],
+    "description": "Surface-17 is the smallest practical instance of the rotated surface code, using 9 data qubits and 8 ancilla qubits (17 total) to achieve distance 3. It is the most widely experimentally demonstrated quantum error-correcting code, with implementations by Google, IBM, ETH Zurich, and others. It serves as the primary benchmark for quantum error correction on near-term hardware.",
+    "tags": [
+      "topological",
+      "stabilizer",
+      "CSS",
+      "surface-code",
+      "experimental",
+      "near-term",
+      "benchmark"
+    ]
+  },
+  {
+    "id": "hexagonal-color",
+    "name": "Hexagonal (6.6.6) Color Code",
+    "family": "topological",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": 0.109,
+      "circuit_level": 0.002,
+      "notes": "Depolarizing threshold same as color code family. Circuit-level threshold lower than 4.8.8 variant due to higher-weight stabilizers."
+    },
+    "hardware_compatibility": [
+      "trapped_ion",
+      "neutral_atom"
+    ],
+    "connectivity": "Hexagonal (6.6.6) tiling with weight-6 stabilizers",
+    "decoders": [
+      "Restriction Decoder",
+      "MWPM",
+      "Projection Decoder"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level",
+      "erasure"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Topological quantum distillation",
+        "authors": [
+          "Hector Bombin",
+          "Miguel Angel Martin-Delgado"
+        ],
+        "year": 2006,
+        "arxiv": "quant-ph/0605138"
+      }
+    ],
+    "description": "The hexagonal color code is defined on the 6.6.6 tiling (regular hexagonal lattice). All stabilizers have weight 6, which is higher than the 4.8.8 variant but provides a more symmetric structure. Like all color codes, it supports transversal Clifford operations. The uniform stabilizer weight simplifies implementation on hardware with homogeneous connectivity.",
+    "tags": [
+      "topological",
+      "stabilizer",
+      "CSS",
+      "color-code",
+      "6.6.6",
+      "hexagonal"
+    ]
+  },
+  {
+    "id": "kitaev-honeycomb",
+    "name": "Kitaev Honeycomb Model",
+    "family": "topological",
+    "parameters": {
+      "n": "2L^2",
+      "k": 2,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Exactly solvable model. Code properties depend on the coupling regime (Abelian vs non-Abelian phase). Not typically characterized by standard thresholds."
+    },
+    "hardware_compatibility": [
+      "neutral_atom",
+      "superconducting"
+    ],
+    "connectivity": "Honeycomb lattice with 3 types of nearest-neighbor coupling",
+    "decoders": [
+      "Vortex Pairing",
+      "Topological Charge Measurement"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "thermal"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "Braiding (non-Abelian anyons)"
+    ],
+    "magic_state_distillation": false,
+    "key_papers": [
+      {
+        "title": "Anyons in an exactly solved model and beyond",
+        "authors": [
+          "A. Yu. Kitaev"
+        ],
+        "year": 2006,
+        "arxiv": "cond-mat/0506438"
+      }
+    ],
+    "description": "The Kitaev honeycomb model is an exactly solvable spin model on a honeycomb lattice that realizes topological order. In one parameter regime it reduces to the toric code (Abelian anyons), and in another it supports non-Abelian Ising anyons that can be braided for topological quantum computation. It is a foundational model connecting condensed matter physics and quantum error correction.",
+    "tags": [
+      "topological",
+      "exactly-solvable",
+      "non-Abelian",
+      "honeycomb",
+      "anyons",
+      "foundational"
+    ]
+  },
+  {
+    "id": "knill-c4-c6",
+    "name": "Knill C4/C6 Code",
+    "family": "stabilizer",
+    "parameters": {
+      "n": "variable",
+      "k": 2,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": 0.01,
+      "notes": "Remarkably high circuit-level threshold of ~1% from Knill (2005), achieved via teleportation-based error correction. Requires high-fidelity Bell state preparation."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "photonic"
+    ],
+    "connectivity": "All-to-all within blocks; concatenated structure",
+    "decoders": [
+      "Teleportation-based Decoder",
+      "Post-selection"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via distillation)"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Quantum computing with realistically noisy devices",
+        "authors": [
+          "Emanuel Knill"
+        ],
+        "year": 2005,
+        "arxiv": "quant-ph/0410199"
+      }
+    ],
+    "description": "The Knill C4/C6 scheme uses concatenation of the [[4,2,2]] and [[6,2,2]] codes with teleportation-based error correction to achieve an exceptionally high circuit-level threshold near 1%. The key insight is using post-selected Bell state preparation and gate teleportation to convert noisy operations into high-fidelity logical operations. The trade-off is high resource overhead from post-selection.",
+    "tags": [
+      "stabilizer",
+      "concatenated",
+      "teleportation",
+      "high-threshold",
+      "post-selection"
+    ]
+  },
+  {
+    "id": "twist-defect-surface",
+    "name": "Twist Defect Surface Code",
+    "family": "topological",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": 0.005,
+      "notes": "Threshold similar to standard surface code. Twist defects enable additional logical operations within a single surface code patch."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "neutral_atom"
+    ],
+    "connectivity": "2D nearest-neighbor grid with twist defect modifications",
+    "decoders": [
+      "MWPM (twist-aware)",
+      "Union-Find"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "Y"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Twist defects and projective non-Abelian braiding statistics",
+        "authors": [
+          "Hector Bombin"
+        ],
+        "year": 2010,
+        "arxiv": "1004.1838"
+      },
+      {
+        "title": "Poking holes and cutting corners to achieve Clifford gates with the surface code",
+        "authors": [
+          "Benjamin J. Brown",
+          "Katharina Laubscher",
+          "Markus S. Kesselring",
+          "James R. Wootton"
+        ],
+        "year": 2017,
+        "arxiv": "1609.04673"
+      }
+    ],
+    "description": "Twist defect surface codes introduce point-like twist defects into the surface code lattice where the stabilizer type changes. These defects carry non-Abelian exchange statistics even though the parent code is Abelian. Braiding twist defects implements logical Clifford gates within a single surface code patch, providing an alternative to lattice surgery for some operations.",
+    "tags": [
+      "topological",
+      "stabilizer",
+      "surface-variant",
+      "twist-defect",
+      "non-Abelian-defects"
+    ]
+  },
+  {
+    "id": "quantum-hamming",
+    "name": "Quantum Hamming Code",
+    "family": "CSS",
+    "parameters": {
+      "n": 15,
+      "k": 7,
+      "d": 3
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Family of CSS codes derived from classical Hamming codes. Small block codes without asymptotic thresholds."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "trapped_ion",
+      "neutral_atom",
+      "photonic"
+    ],
+    "connectivity": "All-to-all within block",
+    "decoders": [
+      "Syndrome Lookup Table",
+      "Maximum Likelihood"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Error correcting codes in quantum theory",
+        "authors": [
+          "Andrew M. Steane"
+        ],
+        "year": 1996,
+        "arxiv": "quant-ph/9601029"
+      },
+      {
+        "title": "Good quantum error-correcting codes exist",
+        "authors": [
+          "A. Robert Calderbank",
+          "Peter W. Shor"
+        ],
+        "year": 1996,
+        "arxiv": "quant-ph/9512032"
+      }
+    ],
+    "description": "Quantum Hamming codes are a family of CSS codes constructed from classical Hamming codes. The Steane [[7,1,3]] code is the smallest member (r=3). For r=4, the [[15,7,3]] code encodes 7 logical qubits. They are perfect codes in the classical sense and provide a high encoding rate for distance-3 error correction. They form a natural family for teaching CSS code construction.",
+    "tags": [
+      "CSS",
+      "stabilizer",
+      "Hamming-based",
+      "classical-derived",
+      "perfect"
+    ]
+  },
+  {
+    "id": "bicycle",
+    "name": "Bicycle Code",
+    "family": "qLDPC",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": null,
+      "notes": "Precursor to bivariate bicycle codes. Performance depends on the circulant matrices chosen."
+    },
+    "hardware_compatibility": [
+      "superconducting",
+      "neutral_atom"
+    ],
+    "connectivity": "Non-local; circulant block structure",
+    "decoders": [
+      "Belief Propagation + OSD",
+      "MWPM"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Bicycle codes and their applications",
+        "authors": [
+          "David J. C. MacKay",
+          "Graeme Mitchison",
+          "Paul L. McFadden"
+        ],
+        "year": 2004,
+        "arxiv": "quant-ph/0304161"
+      }
+    ],
+    "description": "Bicycle codes are a family of CSS qLDPC codes constructed from pairs of circulant matrices. They produce codes with structured parity-check matrices that are amenable to efficient hardware implementation. The bivariate bicycle codes of Bravyi et al. (2024) are a generalization of this construction that achieved landmark results in qLDPC code performance.",
+    "tags": [
+      "qLDPC",
+      "CSS",
+      "circulant",
+      "structured",
+      "precursor"
+    ]
+  },
+  {
+    "id": "stellated-surface",
+    "name": "Stellated Surface Code",
+    "family": "topological",
+    "parameters": {
+      "n": "variable",
+      "k": 1,
+      "d": "variable"
+    },
+    "threshold": {
+      "depolarizing": null,
+      "circuit_level": 0.005,
+      "notes": "Circuit-level threshold comparable to the standard surface code. Designed for connectivity-limited hardware."
+    },
+    "hardware_compatibility": [
+      "superconducting"
+    ],
+    "connectivity": "Modified 2D grid with reduced degree for ancilla qubits",
+    "decoders": [
+      "MWPM",
+      "Union-Find"
+    ],
+    "noise_models": [
+      "depolarizing",
+      "circuit_level"
+    ],
+    "fault_tolerant": true,
+    "logical_gates": [
+      "CNOT",
+      "H",
+      "S",
+      "T (via magic state distillation)"
+    ],
+    "magic_state_distillation": true,
+    "key_papers": [
+      {
+        "title": "Decoding across the quantum low-density parity-check code landscape",
+        "authors": [
+          "Armanda O. Quintavalle",
+          "Michael Vasmer",
+          "Joschka Roffe",
+          "Earl T. Campbell"
+        ],
+        "year": 2021,
+        "arxiv": "2005.07016"
+      }
+    ],
+    "description": "The stellated surface code modifies the standard surface code by reducing the degree of ancilla qubits, creating a sparser connectivity graph. This makes it more compatible with hardware that has limited qubit-to-qubit coupling while maintaining error-correction performance close to the standard surface code.",
+    "tags": [
+      "topological",
+      "stabilizer",
+      "CSS",
+      "surface-variant",
+      "low-connectivity"
+    ]
   }
 ]
