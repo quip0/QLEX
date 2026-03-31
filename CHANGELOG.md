@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [0.1.1] — UI Enhancements
+
+### Added
+- **DESCRIBE screen** — press `d` from BROWSE or DETAIL to view plain-language explanations of every field in a QEC code entry (parameters, thresholds, hardware, connectivity, decoders, noise models, logical gates, key papers). Toggle back with `ESC` or `d`.
+- **Sitting cat mascot** — an ASCII cat sits in the bottom-left corner of the screen with an animated tail wag (pendulum cycle: `\`, `|`, `/`, `|`). Appears on all screens except SPLASH.
+
+### Changed
+- **Logo redesign** — replaced box-drawing characters (`╗`, `╔`, `║`) with clean solid-block (`█`) letterforms that match the QLEX SVG logo. Added a subtle drop shadow rendered with dim `░` characters offset +1 row/column.
+- Footer hints updated to include the new `d describe` keybinding on BROWSE and DETAIL screens.
+
+---
+
 ## [0.1.0] — Initial Release
 
 ### Added

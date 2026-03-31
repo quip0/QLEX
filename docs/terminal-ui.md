@@ -30,7 +30,7 @@ On exit (`q` or `Ctrl+C`), QLEX prints `"QLEX — by Qorex"` to stdout and resto
 
 <img src="../assets/logos/icon.svg" alt="QLEX" width="32" align="left" style="margin-right: 12px" />
 
-The splash screen is shown for 2 seconds on launch. It displays the QLEX logo, the tagline *"The Quantum Lexicon"*, the Qorex brand mark, and an animated loading bar. Press any key to skip.
+The splash screen is shown for 2 seconds on launch. It displays the QLEX logo (clean solid-block letterforms with a dim drop shadow), the tagline *"The Quantum Lexicon"*, the Qorex brand mark, and an animated loading bar. Press any key to skip.
 
 <br clear="all" />
 
@@ -56,7 +56,7 @@ The main explorer where you spend most of your time.
                               │  stabilizer code defined on a 2D
                               │  lattice of qubits.
  ─────────────────────────────────────────────────────────────────────────
- ENTER detail · / search · c compare · C compare view · f filter · ? help
+ ENTER detail · / search · c compare · C compare view · d describe · f filter · ? help
 ```
 
 **Layout:**
@@ -75,6 +75,7 @@ The main explorer where you spend most of your time.
 | `/` | Enter SEARCH mode |
 | `c` | Toggle selected code into compare selection (max 3) |
 | `C` | Open COMPARE screen (requires 2+ staged codes) |
+| `d` | Open DESCRIBE screen (field explanations) |
 | `f` | Cycle through family filters (topological → CSS → ... → none) |
 | `Esc` | Clear active filters |
 | `?` | Open HELP screen |
@@ -107,7 +108,7 @@ Full-page view of a single QEC code. All properties are displayed in a two-colum
    2D nearest-neighbor grid   │   Topological quantum memory
                               │   arxiv: quant-ph/0110143
  ─────────────────────────────────────────────────────────────────────────
- ESC back · c stage for compare · e export config
+ ESC back · c stage for compare · d describe fields · e export config
 ```
 
 **Left column:** Parameters, thresholds with ASCII bars, hardware tags, connectivity.
@@ -120,6 +121,7 @@ Full-page view of a single QEC code. All properties are displayed in a two-colum
 |-----|--------|
 | `Esc` / `b` | Return to BROWSE (restores previous selection) |
 | `c` | Stage this code for comparison |
+| `d` | Open DESCRIBE screen (explains what each field means) |
 | `e` | Export config — shows JSON in a modal overlay (press any key to close) |
 
 ---
@@ -198,6 +200,61 @@ Full-screen keyboard reference with all bindings grouped by screen context.
 | Key | Action |
 |-----|--------|
 | `Esc` / `q` | Close help and return to BROWSE |
+
+---
+
+### DESCRIBE
+
+A reference screen that explains every field shown in the DETAIL view. Accessible from both BROWSE and DETAIL by pressing `d`.
+
+```
+                        FIELD DESCRIPTIONS
+ ─────────────────────────────────────────────────────────────────────────
+ PARAMETERS  [[n, k, d]]        │ DESCRIPTION
+  The code's defining numbers.   │  A technical overview of what the
+  n — total physical qubits      │  code is, how it works, and what
+  k — logical qubits encoded     │  makes it notable or useful.
+  d — code distance              │
+                                  │ DECODERS
+ THRESHOLDS                      │  Algorithms that read error syndrome
+  Maximum physical error rates   │  measurements and figure out what
+  the code can tolerate.         │  went wrong.
+  Circuit-level — realistic      │
+    gate and measurement errors. │ NOISE MODELS
+  Depolarizing — symmetric       │  Types of noise the code has been
+    noise on every qubit.        │  analyzed or benchmarked against.
+                                  │
+ HARDWARE                        │ LOGICAL GATES
+  Quantum computing platforms    │  Gate operations available at the
+  the code is designed for.      │  encoded logical level.
+                                  │
+ CONNECTIVITY                    │ KEY PAPERS
+  Required physical qubit        │  Foundational publications that
+  layout and wiring.             │  introduced or advanced this code.
+ ─────────────────────────────────────────────────────────────────────────
+ ESC to close
+```
+
+**Keyboard:**
+
+| Key | Action |
+|-----|--------|
+| `Esc` / `d` | Close and return to BROWSE |
+
+---
+
+### Cat Mascot
+
+A small ASCII cat sits in the bottom-left corner of the screen on all screens except SPLASH. Its tail wags in a pendulum animation (`\` → `|` → `/` → `|`) at roughly one cycle per second.
+
+```
+\    /\
+ )  ( ')
+(  /  )
+ \(__)|
+```
+
+The cat is drawn with a transparent background (only non-space characters are rendered) so it overlays the footer area without fully obscuring the hint text.
 
 ---
 

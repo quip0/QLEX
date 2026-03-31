@@ -83,7 +83,6 @@ def render_splash(win: curses.window, state: UIState, start_time: float) -> bool
     bar = "█" * filled + "░" * (bar_w - filled)
     draw_text(win, bar_y, bar_x, bar, PAIR_TITLE)
 
-    win.refresh()
     return progress >= 1.0
 
 
@@ -192,10 +191,8 @@ def render_browse(
         if msg:
             draw_text(win, footer_y + 1, 1, msg, PAIR_ACCENT)
         else:
-            hint = "ENTER detail · / search · c compare · C compare view · f filter · ? help · q quit"
+            hint = "ENTER detail · / search · c compare · C compare view · d describe · f filter · ? help · q quit"
             draw_text(win, footer_y + 1, 1, hint[:max_x - 2], PAIR_DIM)
-
-    win.refresh()
 
 
 def render_detail(win: curses.window, state: UIState) -> None:
@@ -329,9 +326,7 @@ def render_detail(win: curses.window, state: UIState) -> None:
     if msg:
         draw_text(win, footer_y, 1, msg, PAIR_ACCENT)
     else:
-        draw_text(win, footer_y, 1, "ESC back · c stage for compare · e export config", PAIR_DIM)
-
-    win.refresh()
+        draw_text(win, footer_y, 1, "ESC back · c stage for compare · d describe fields · e export config", PAIR_DIM)
 
 
 def render_compare(win: curses.window, state: UIState, codes: list[QECCode]) -> None:
@@ -442,7 +437,6 @@ def render_compare(win: curses.window, state: UIState, codes: list[QECCode]) -> 
     footer_y = max_y - 1
     draw_hline(win, footer_y - 1, 0, max_x, GLYPHS_LIGHT, PAIR_DIM)
     draw_text(win, footer_y, 1, "ESC back · c clear selection", PAIR_DIM)
-    win.refresh()
 
 
 def render_help(win: curses.window, state: UIState) -> None:
@@ -521,4 +515,116 @@ def render_help(win: curses.window, state: UIState) -> None:
     footer_y = max_y - 1
     draw_hline(win, footer_y - 1, 0, max_x, GLYPHS_LIGHT, PAIR_DIM)
     draw_text(win, footer_y, 1, "ESC to close", PAIR_DIM)
-    win.refresh()
+
+
+def render_describe(win: curses.window, state: UIState) -> None:
+    """Render the DESCRIBE screen explaining each field of a QEC code entry."""
+    max_y, max_x = win.getmaxyx()
+    win.erase()
+
+    draw_text(win, 0, (max_x - 21) // 2, "FIELD DESCRIPTIONS", PAIR_TITLE, bold=True)
+    draw_hline(win, 1, 0, max_x, GLYPHS_LIGHT, PAIR_DIM)
+
+    col_w = (max_x - 3) // 2
+    left_x = 2
+    right_x = col_w + 3
+
+    # Vertical divider
+    for row in range(2, max_y - 2):
+        draw_text(win, row, col_w + 1, "│", PAIR_DIM)
+
+    entries_left = [
+        ("PARAMETERS  [[n, k, d]]", [
+            "The code's defining numbers.",
+            "n — total physical qubits needed.",
+            "k — logical qubits encoded (the",
+            "    useful information capacity).",
+            "d — code distance: how many qubit",
+            "    errors it can detect/correct.",
+            "    Higher d = better protection.",
+        ]),
+        ("THRESHOLDS", [
+            "Maximum physical error rates the",
+            "code can tolerate and still correct.",
+            "Circuit-level — realistic gate and",
+            "  measurement errors combined.",
+            "Depolarizing — symmetric noise on",
+            "  every qubit each round.",
+            "Higher values = more forgiving.",
+        ]),
+        ("HARDWARE", [
+            "Quantum computing platforms the code",
+            "has been demonstrated or designed",
+            "for (e.g. superconducting, trapped",
+            "ion, neutral atom, photonic).",
+        ]),
+        ("CONNECTIVITY", [
+            "Required physical qubit layout.",
+            "Describes how qubits must be wired",
+            "together — e.g. 2D nearest-neighbor",
+            "grid, all-to-all, heavy-hex.",
+        ]),
+    ]
+
+    entries_right = [
+        ("DESCRIPTION", [
+            "A technical overview of what the",
+            "code is, how it works, and what",
+            "makes it notable or useful.",
+        ]),
+        ("DECODERS", [
+            "Algorithms that read error syndrome",
+            "measurements and figure out what",
+            "went wrong. Examples: MWPM (minimum",
+            "weight perfect matching), Union-Find,",
+            "belief propagation.",
+        ]),
+        ("NOISE MODELS", [
+            "Types of noise the code has been",
+            "analyzed or benchmarked against,",
+            "e.g. depolarizing, biased, erasure,",
+            "circuit-level.",
+        ]),
+        ("LOGICAL GATES", [
+            "Gate operations that can be applied",
+            "to the encoded logical qubits.",
+            "A universal set (e.g. H, CNOT, T)",
+            "means arbitrary quantum computation.",
+        ]),
+        ("KEY PAPERS", [
+            "Foundational publications that",
+            "introduced or significantly advanced",
+            "this code. Includes arXiv links.",
+        ]),
+    ]
+
+    ly = 2
+    for title, lines in entries_left:
+        if ly >= max_y - 3:
+            break
+        draw_text(win, ly, left_x, title, PAIR_ACCENT, bold=True)
+        ly += 1
+        for line in lines:
+            if ly >= max_y - 3:
+                break
+            draw_text(win, ly, left_x + 1, line[:col_w - 3], PAIR_BODY)
+            ly += 1
+        ly += 1
+
+    ry = 2
+    for title, lines in entries_right:
+        if ry >= max_y - 3:
+            break
+        draw_text(win, ry, right_x, title, PAIR_ACCENT, bold=True)
+        ry += 1
+        for line in lines:
+            if ry >= max_y - 3:
+                break
+            draw_text(win, ry, right_x + 1, line[:col_w - 3], PAIR_BODY)
+            ry += 1
+        ry += 1
+
+    # Footer
+    footer_y = max_y - 1
+    draw_hline(win, footer_y - 1, 0, max_x, GLYPHS_LIGHT, PAIR_DIM)
+    draw_text(win, footer_y, 1, "ESC to close", PAIR_DIM)

@@ -9,8 +9,11 @@ from qlex.ui.theme import (
     ANIM_FPS,
     ANIM_TRANSITION_FRAMES,
     BRAND,
+    CAT_FRAMES,
+    CAT_WIDTH,
     CHAR_DENSITY,
     LOGO,
+    PAIR_BODY,
     PAIR_DIM,
     PAIR_QOREX,
     PAIR_TITLE,
@@ -72,16 +75,38 @@ def draw_hline(
 
 
 def draw_logo(win: curses.window, y: int, x: int) -> None:
-    """Render the QLEX ASCII logo."""
-    attr = curses.color_pair(PAIR_TITLE) | curses.A_BOLD
+    """Render the QLEX ASCII logo with a small drop shadow."""
+    shadow_attr = curses.color_pair(PAIR_DIM)
+    main_attr = curses.color_pair(PAIR_TITLE) | curses.A_BOLD
+    # Shadow pass: draw dim blocks offset +1 row, +1 col
     for i, line in enumerate(LOGO):
-        _safe_addstr(win, y + i, x, line, attr)
+        for j, ch in enumerate(line):
+            if ch == "█":
+                _safe_addstr(win, y + i + 1, x + j + 1, "░", shadow_attr)
+    # Main pass: draw bright blocks on top
+    for i, line in enumerate(LOGO):
+        for j, ch in enumerate(line):
+            if ch == "█":
+                _safe_addstr(win, y + i, x + j, ch, main_attr)
 
 
 def draw_brand(win: curses.window, y: int, x: int) -> None:
     """Render 'by Qorex' in PAIR_QOREX."""
     attr = curses.color_pair(PAIR_QOREX) | curses.A_BOLD
     _safe_addstr(win, y, x, BRAND, attr)
+
+
+def draw_cat(win: curses.window, cat_frame: int) -> None:
+    """Draw the sitting cat with tail wag on the footer hline."""
+    max_y, _max_x = win.getmaxyx()
+    cat_x = 1
+    cat_y = max_y - 2 - 3  # feet on the hline (max_y - 2)
+    frame = CAT_FRAMES[cat_frame % len(CAT_FRAMES)]
+    attr = curses.color_pair(PAIR_BODY)
+    for i, line in enumerate(frame):
+        for j, ch in enumerate(line):
+            if ch != " ":
+                _safe_addstr(win, cat_y + i, cat_x + j, ch, attr)
 
 
 def draw_text(

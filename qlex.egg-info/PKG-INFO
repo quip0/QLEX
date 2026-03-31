@@ -7,7 +7,9 @@ Project-URL: Homepage, https://github.com/qorex/qlex
 Project-URL: Repository, https://github.com/qorex/qlex
 Keywords: quantum,error-correction,QEC,quantum-computing,Qorex
 Requires-Python: >=3.10
+License-File: LICENSE
 Requires-Dist: pydantic>=2.0
 Provides-Extra: dev
 Requires-Dist: pytest; extra == "dev"
 Requires-Dist: pytest-cov; extra == "dev"
+Dynamic: license-file

@@ -18,6 +18,7 @@ class Screen(Enum):
     DETAIL = "DETAIL"
     SEARCH = "SEARCH"
     COMPARE = "COMPARE"
+    DESCRIBE = "DESCRIBE"
     HELP = "HELP"
 
 
@@ -36,6 +37,8 @@ class UIState:
         self.message: str = ""
         self.message_time: float = 0.0
         self.should_animate: bool = False
+        self.cat_tick: int = 0
+        self.cat_frame: int = 0
 
     def transition_to(self, screen: Screen) -> None:
         """Set the current screen and flag for transition animation."""

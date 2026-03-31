@@ -1,3 +1,4 @@
+LICENSE
 README.md
 pyproject.toml
 qlex/__init__.py

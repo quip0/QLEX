@@ -10,10 +10,11 @@ import traceback
 from pathlib import Path
 
 from qlex.registry import Registry
-from qlex.ui.renderer import animate_transition
+from qlex.ui.renderer import animate_transition, draw_cat
 from qlex.ui.screens import (
     render_browse,
     render_compare,
+    render_describe,
     render_detail,
     render_help,
     render_splash,
@@ -94,6 +95,7 @@ def _main(stdscr: curses.window) -> None:
             # Render current screen
             if state.current_screen == Screen.SPLASH:
                 done = render_splash(stdscr, state, splash_start)
+                stdscr.refresh()
                 if done:
                     state.transition_to(Screen.BROWSE)
                     continue
@@ -120,6 +122,16 @@ def _main(stdscr: curses.window) -> None:
 
             elif state.current_screen == Screen.HELP:
                 render_help(stdscr, state)
+
+            elif state.current_screen == Screen.DESCRIBE:
+                render_describe(stdscr, state)
+
+            # Animate the sitting cat's tail wag
+            state.cat_tick += 1
+            if state.cat_tick % 6 == 0:
+                state.cat_frame = (state.cat_frame + 1) % 4
+            draw_cat(stdscr, state.cat_frame)
+            stdscr.refresh()
 
             # Input handling
             ch = stdscr.getch()
@@ -188,6 +200,8 @@ def _main(stdscr: curses.window) -> None:
                 elif ch == 27:  # ESC
                     state.filter_family = None
                     state.selected_index = 0
+                elif ch == ord("d"):
+                    state.transition_to(Screen.DESCRIBE)
                 elif ch == ord("?"):
                     state.transition_to(Screen.HELP)
 
@@ -220,6 +234,8 @@ def _main(stdscr: curses.window) -> None:
                         stdscr.timeout(-1)
                         stdscr.getch()
                         stdscr.timeout(1000 // ANIM_FPS)
+                elif ch == ord("d"):
+                    state.transition_to(Screen.DESCRIBE)
 
             elif state.current_screen == Screen.COMPARE:
                 if ch == 27:  # ESC
@@ -230,6 +246,10 @@ def _main(stdscr: curses.window) -> None:
 
             elif state.current_screen == Screen.HELP:
                 if ch == 27 or ch == ord("q"):
+                    state.transition_to(Screen.BROWSE)
+
+            elif state.current_screen == Screen.DESCRIBE:
+                if ch == 27 or ch == ord("d"):
                     state.transition_to(Screen.BROWSE)
 
         except KeyboardInterrupt:

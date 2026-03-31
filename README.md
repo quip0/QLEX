@@ -103,7 +103,7 @@ Returns a versioned dict that any Qorex tool can ingest:
 qlex
 ```
 
-Opens a keyboard-driven ASCII explorer with animated transitions, real-time search, and side-by-side comparison. Use `↑`/`↓` to browse, `/` to search, `c` to stage codes for comparison, `Enter` for detail. Press `?` for the full keyboard reference.
+Opens a keyboard-driven ASCII explorer with animated transitions, real-time search, and side-by-side comparison. Use `↑`/`↓` to browse, `/` to search, `c` to stage codes for comparison, `Enter` for detail, `d` for field descriptions. Press `?` for the full keyboard reference.
 
 ### 5. CLI — script and pipe
 
@@ -199,6 +199,7 @@ The TUI is an entirely keyboard-driven ASCII explorer built on Python's `curses`
 | **DETAIL** | Full-page view of a single code with all properties |
 | **SEARCH** | Real-time substring filter overlay on BROWSE |
 | **COMPARE** | Side-by-side comparison of 2-3 codes with winner metrics |
+| **DESCRIBE** | Plain-language explanations of every code field |
 | **HELP** | Complete keyboard reference |
 
 ### Keyboard Shortcuts
@@ -211,6 +212,7 @@ The TUI is an entirely keyboard-driven ASCII explorer built on Python's `curses`
 | `/` | Enter search | — | — | — |
 | `c` | Stage for compare | Stage for compare | — | Clear selection |
 | `C` | Open compare | — | — | — |
+| `d` | Describe fields | Describe fields | — | — |
 | `f` | Cycle family filter | — | — | — |
 | `e` | — | Export JSON | — | — |
 | `b`/`Esc` | Clear filters | Back to browse | Cancel search | Back to browse |
