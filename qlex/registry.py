@@ -11,6 +11,49 @@ from qlex.filters import filter_codes
 from qlex.models import QECCode
 
 
+def _score_code(code: QECCode, tokens: list[str], full_query: str) -> int:
+    """Score a code against search tokens.  Return 0 if any token has no match."""
+    total = 0
+    for token in tokens:
+        best = 0
+        # High-value: ID and name
+        if token in code.id:
+            best = max(best, 100)
+        if token in code.name.lower():
+            best = max(best, 90)
+        # Medium-high: family, tags
+        if token in code.family.lower():
+            best = max(best, 70)
+        if any(token in t.lower() for t in code.tags):
+            best = max(best, 60)
+        # Medium: decoders, hardware, noise models, logical gates
+        if any(token in d.lower() for d in code.decoders):
+            best = max(best, 50)
+        if any(token in hw.lower() for hw in code.hardware_compatibility):
+            best = max(best, 50)
+        if any(token in nm.lower() for nm in code.noise_models):
+            best = max(best, 50)
+        if any(token in g.lower() for g in code.logical_gates):
+            best = max(best, 40)
+        # Lower: connectivity, description, papers
+        if token in code.connectivity.lower():
+            best = max(best, 30)
+        for paper in code.key_papers:
+            if token in paper.title.lower():
+                best = max(best, 35)
+            if any(token in a.lower() for a in paper.authors):
+                best = max(best, 35)
+        if token in code.description.lower():
+            best = max(best, 20)
+        if best == 0:
+            return 0  # every token must match somewhere
+        total += best
+    # Bonus for exact name/ID match
+    if full_query == code.name.lower() or full_query == code.id:
+        total += 200
+    return total
+
+
 class Registry:
     """In-memory QEC code registry loaded from codes.json at init time."""
 
@@ -51,23 +94,26 @@ class Registry:
         return filter_codes(self.list_codes(), **kwargs)
 
     def search(self, query: str) -> list[QECCode]:
-        """Case-insensitive substring search across name, description, and tags."""
-        q = query.lower()
-        results = []
+        """Ranked multi-token search across all code fields.
+
+        Splits the query into tokens and requires every token to match
+        somewhere.  Results are ranked by *where* tokens match — name and
+        ID hits score highest, description hits score lowest.
+        """
+        q = query.lower().strip()
+        if not q:
+            return self.list_codes()
+
+        tokens = q.split()
+        scored: list[tuple[int, QECCode]] = []
+
         for code in self.list_codes():
-            if q in code.name.lower():
-                results.append(code)
-                continue
-            if q in code.description.lower():
-                results.append(code)
-                continue
-            if any(q in tag.lower() for tag in code.tags):
-                results.append(code)
-                continue
-            if any(q in nm.lower() for nm in code.noise_models):
-                results.append(code)
-                continue
-        return results
+            score = _score_code(code, tokens, q)
+            if score > 0:
+                scored.append((score, code))
+
+        scored.sort(key=lambda x: x[0], reverse=True)
+        return [code for _, code in scored]
 
     def compare(self, *ids: str) -> Comparison:
         """Compare two or more codes by ID. Delegates to compare.py."""

@@ -96,11 +96,21 @@ def draw_brand(win: curses.window, y: int, x: int) -> None:
     _safe_addstr(win, y, x, BRAND, attr)
 
 
+def get_cat_region(max_y: int) -> tuple[int, int, int, int]:
+    """Return (top_y, left_x, height, width) of the area reserved for the cat.
+
+    Screens should avoid drawing content inside this rectangle so the cat
+    is always fully visible without overlapping text.
+    """
+    cat_x = 1
+    cat_y = max_y - 2 - 3  # feet on the hline (max_y - 2)
+    return (cat_y, cat_x, 4, CAT_WIDTH)
+
+
 def draw_cat(win: curses.window, cat_frame: int) -> None:
     """Draw the sitting cat with tail wag on the footer hline."""
     max_y, _max_x = win.getmaxyx()
-    cat_x = 1
-    cat_y = max_y - 2 - 3  # feet on the hline (max_y - 2)
+    cat_y, cat_x, _h, _w = get_cat_region(max_y)
     frame = CAT_FRAMES[cat_frame % len(CAT_FRAMES)]
     attr = curses.color_pair(PAIR_BODY)
     for i, line in enumerate(frame):

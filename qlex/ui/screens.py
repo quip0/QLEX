@@ -18,6 +18,7 @@ from qlex.ui.renderer import (
     draw_tag,
     draw_text,
     draw_threshold_bar,
+    get_cat_region,
 )
 from qlex.ui.state import UIState
 from qlex.ui.theme import (
@@ -131,7 +132,8 @@ def render_browse(
         marker = "◆" if code.id in state.compare_selection else "▶"
         items.append(f" {marker} {name}{' ' * max(1, padding)}{family_tag}")
 
-    list_h = content_h - 1
+    cat_top_y = get_cat_region(max_y)[0]
+    list_h = min(content_h - 1, cat_top_y - 3)
     draw_scrollable_list(
         win, 3, 0, list_h, left_w, items,
         state.selected_index, PAIR_BODY, PAIR_ACCENT,
@@ -219,45 +221,60 @@ def render_detail(win: curses.window, state: UIState) -> None:
     for row in range(2, max_y - 2):
         draw_text(win, row, col_w + 1, "│", PAIR_DIM)
 
-    # LEFT COLUMN
+    # LEFT COLUMN — stop before the cat region
     ly = 2
+    cat_top_y = get_cat_region(max_y)[0]
 
     # Parameters section
-    draw_text(win, ly, left_x, "PARAMETERS", PAIR_TITLE, bold=True)
-    ly += 1
-    draw_text(win, ly, left_x, f"  n = {code.parameters.n}", PAIR_BODY)
-    ly += 1
-    draw_text(win, ly, left_x, f"  k = {code.parameters.k}", PAIR_BODY)
-    ly += 1
-    draw_text(win, ly, left_x, f"  d = {code.parameters.d}", PAIR_BODY)
-    ly += 2
+    if ly < cat_top_y:
+        draw_text(win, ly, left_x, "PARAMETERS", PAIR_TITLE, bold=True)
+        ly += 1
+    if ly < cat_top_y:
+        draw_text(win, ly, left_x, f"  n = {code.parameters.n}", PAIR_BODY)
+        ly += 1
+    if ly < cat_top_y:
+        draw_text(win, ly, left_x, f"  k = {code.parameters.k}", PAIR_BODY)
+        ly += 1
+    if ly < cat_top_y:
+        draw_text(win, ly, left_x, f"  d = {code.parameters.d}", PAIR_BODY)
+        ly += 2
 
     # Thresholds section
-    draw_text(win, ly, left_x, "THRESHOLDS", PAIR_TITLE, bold=True)
-    ly += 1
-    draw_text(win, ly, left_x, "  Circuit-level:", PAIR_DIM)
-    draw_threshold_bar(win, ly, left_x + 18, col_w - 20, code.threshold.circuit_level, 0.02, PAIR_SUCCESS)
-    ly += 1
-    draw_text(win, ly, left_x, "  Depolarizing: ", PAIR_DIM)
-    draw_threshold_bar(win, ly, left_x + 18, col_w - 20, code.threshold.depolarizing, 0.20, PAIR_SUCCESS)
-    ly += 2
+    if ly < cat_top_y:
+        draw_text(win, ly, left_x, "THRESHOLDS", PAIR_TITLE, bold=True)
+        ly += 1
+    if ly < cat_top_y:
+        draw_text(win, ly, left_x, "  Circuit-level:", PAIR_DIM)
+        draw_threshold_bar(win, ly, left_x + 18, col_w - 20, code.threshold.circuit_level, 0.02, PAIR_SUCCESS)
+        ly += 1
+    if ly < cat_top_y:
+        draw_text(win, ly, left_x, "  Depolarizing: ", PAIR_DIM)
+        draw_threshold_bar(win, ly, left_x + 18, col_w - 20, code.threshold.depolarizing, 0.20, PAIR_SUCCESS)
+        ly += 2
 
     # Hardware section
-    draw_text(win, ly, left_x, "HARDWARE", PAIR_TITLE, bold=True)
-    ly += 1
-    tx = left_x + 2
-    for hw in code.hardware_compatibility:
-        tag_w = draw_tag(win, ly, tx, hw, PAIR_ACCENT)
-        tx += tag_w + 1
-        if tx + 10 > left_x + col_w:
-            ly += 1
-            tx = left_x + 2
-    ly += 2
+    if ly < cat_top_y:
+        draw_text(win, ly, left_x, "HARDWARE", PAIR_TITLE, bold=True)
+        ly += 1
+    if ly < cat_top_y:
+        tx = left_x + 2
+        for hw in code.hardware_compatibility:
+            if ly >= cat_top_y:
+                break
+            tag_w = draw_tag(win, ly, tx, hw, PAIR_ACCENT)
+            tx += tag_w + 1
+            if tx + 10 > left_x + col_w:
+                ly += 1
+                tx = left_x + 2
+        ly += 2
 
     # Connectivity
-    draw_text(win, ly, left_x, "CONNECTIVITY", PAIR_TITLE, bold=True)
-    ly += 1
+    if ly < cat_top_y:
+        draw_text(win, ly, left_x, "CONNECTIVITY", PAIR_TITLE, bold=True)
+        ly += 1
     for line in _word_wrap(code.connectivity, col_w - 4):
+        if ly >= cat_top_y:
+            break
         draw_text(win, ly, left_x + 2, line, PAIR_BODY)
         ly += 1
 
