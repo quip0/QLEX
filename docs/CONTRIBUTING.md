@@ -137,5 +137,5 @@ Be respectful, constructive, and collaborative. QLEX is built for the quantum co
 ---
 
 <p align="center">
-  <sub>QLEX is a product of <a href="https://github.com/qorex">Qorex</a></sub>
+  <sub>QLEX is a product of >Qorex</a></sub>
 </p>
